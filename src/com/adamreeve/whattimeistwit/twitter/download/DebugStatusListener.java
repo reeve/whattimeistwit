@@ -4,13 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
-import twitter4j.StatusListener;
 
 /**
  * Date: 7/4/12
  * Time: 6:30 PM
  */
-class DebugStatusListener implements StatusListener {
+class DebugStatusListener implements CloseableStatusListener {
     static Logger logger = LoggerFactory.getLogger(DebugStatusListener.class);
 
     public void onStatus(Status status) {
@@ -33,5 +32,10 @@ class DebugStatusListener implements StatusListener {
 
     public void onException(Exception ex) {
         logger.error("Exception returned", ex);
+    }
+
+    @Override
+    public void close() {
+        // no op
     }
 }

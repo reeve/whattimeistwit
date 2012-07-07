@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,7 +18,7 @@ import java.io.IOException;
 public class FileWriterStatusListener implements CloseableStatusListener {
     static Logger logger = LoggerFactory.getLogger(FileWriterStatusListener.class);
 
-    private FileWriter writer;
+    private BufferedWriter writer;
     private int writeCount;
     private static final int REPORT_EVERY = 100;
     private static final int LATENCY_LIMIT_MS = 5000;
@@ -36,7 +37,7 @@ public class FileWriterStatusListener implements CloseableStatusListener {
             throw new IOException("Cannot write to output file: " + outputFile.getCanonicalPath());
         }
 
-        writer = new FileWriter(outputFile);
+        writer = new BufferedWriter(new FileWriter(outputFile));
     }
 
     @Override
@@ -46,6 +47,7 @@ public class FileWriterStatusListener implements CloseableStatusListener {
 
         try {
             writer.write(tweet.toFileStr());
+            writer.newLine();
         } catch (IOException e) {
             logger.error("Exception writing output record", e);
         }
@@ -57,6 +59,11 @@ public class FileWriterStatusListener implements CloseableStatusListener {
             logger.info(String.format("Wrote %d records - latency is currently %d ms", writeCount, latency));
             if (latency > LATENCY_LIMIT_MS) {
                 throw new RuntimeException(String.format("Latency limit exceeded: %d", latency));
+            }
+            try {
+                writer.flush();
+            } catch (IOException e) {
+                logger.error("Exception flushing output stream", e);
             }
         }
     }

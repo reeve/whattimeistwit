@@ -40,7 +40,10 @@ public class GeneralLanguageClassifier implements LanguageClassifier {
             BufferedReader reader = new BufferedReader(new FileReader(dictPath));
             String line = reader.readLine();
             while (line != null) {
-                result.add(line.trim());
+                String word = line.trim().split("\\s")[0];
+                if (word.length() > 1) {
+                    result.add(word);
+                }
                 line = reader.readLine();
             }
         } catch (IOException e) {

@@ -15,7 +15,7 @@ public class TwitterStreamClient {
 
     private static Logger logger = LoggerFactory.getLogger(TwitterStreamClient.class);
 
-    private static final int RUNTIME_SECS = 120;
+    private static final int RUNTIME_SECS = 60;
 
     public static void main(String[] args) {
         logger.info("Starting...");

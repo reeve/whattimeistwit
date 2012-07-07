@@ -1,5 +1,6 @@
 package com.adamreeve.whattimeistwit.analysis;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -8,21 +9,21 @@ import java.util.Map;
  */
 public class Classification {
 
-    private Map<String, Byte> certaintyMap;
+    private Map<String, Float> certaintyMap = new HashMap<>();
 
-    public void setCertainty(String lang, Byte value) {
+    public void setCertainty(String lang, Float value) {
         certaintyMap.put(lang, value);
     }
 
-    public Byte getCertainty(String lang) {
+    public Float getCertainty(String lang) {
         return certaintyMap.get(lang);
     }
 
     public String getBestMatchLang() {
-        Byte best = 0;
+        Float best = 0f;
         String bestLang = null;
-        for (Map.Entry<String, Byte> entry : certaintyMap.entrySet()) {
-            Byte value = entry.getValue();
+        for (Map.Entry<String, Float> entry : certaintyMap.entrySet()) {
+            Float value = entry.getValue();
             if (value > best) {
                 best = value;
                 bestLang = entry.getKey();
@@ -31,4 +32,10 @@ public class Classification {
         return bestLang;
     }
 
+    @Override
+    public String toString() {
+        return "Classification{" +
+                "certaintyMap=" + certaintyMap +
+                '}';
+    }
 }

@@ -1,6 +1,4 @@
-package com.adamreeve.whattimeistwit.analysis;
-
-import com.adamreeve.whattimeistwit.twitter.Tweet;
+package com.adamreeve.whattimeistwit.twitter.tweet;
 
 /**
  * Date: 7/7/12

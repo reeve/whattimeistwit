@@ -1,6 +1,6 @@
 package com.adamreeve.whattimeistwit.twitter.download;
 
-import com.adamreeve.whattimeistwit.twitter.Tweet;
+import com.adamreeve.whattimeistwit.twitter.tweet.Tweet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import twitter4j.Status;
@@ -55,7 +55,7 @@ public class FileWriterStatusListener implements CloseableStatusListener {
         writeCount++;
 
         if (writeCount % REPORT_EVERY == 0) {
-            long latency = status.getCreatedAt().getTime() - System.currentTimeMillis();
+            long latency = Math.abs(status.getCreatedAt().getTime() - System.currentTimeMillis());
             logger.info(String.format("Wrote %d records - latency is currently %d ms", writeCount, latency));
             if (latency > LATENCY_LIMIT_MS) {
                 throw new RuntimeException(String.format("Latency limit exceeded: %d", latency));

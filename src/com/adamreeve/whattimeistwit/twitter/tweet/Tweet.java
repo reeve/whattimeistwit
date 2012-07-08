@@ -1,4 +1,4 @@
-package com.adamreeve.whattimeistwit.twitter;
+package com.adamreeve.whattimeistwit.twitter.tweet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Date: 7/4/12
@@ -19,10 +20,17 @@ public class Tweet {
 
     private static final String FORMAT = "{0,date,yyyyMMdd HH:mm:ss}|{1,number,###}|{2}";
     private static final MessageFormat formatter = new MessageFormat(FORMAT);
-    public static final ArrayList<String> EMPTY_RESULT = new ArrayList<>();
+    private static final Pattern splitPattern = Pattern.compile("[ \\.\\-\\?!\\(\\)\\|\\]\\[\\{\\},']");
+    private static final Pattern badPattern = Pattern.compile("RT|@\\S*|http://\\S*|\\S*[0..9]+\\S*");
+    private static final Pattern lineBreakPattern = Pattern.compile("\\n|\\r");
+
+    private static final int MIN_WORD_LENGTH = 3;
+
     private Date created;
     private String text;
     private Long id;
+
+    public static final ArrayList<String> EMPTY_RESULT = new ArrayList<>();
 
     public Tweet(String fileStr) {
         try {
@@ -57,7 +65,8 @@ public class Tweet {
         if (text == null) {
             return EMPTY_RESULT;
         }
-        String[] splitResult = text.split("[ \\.\\-\\?!\\(\\)\\|\\]\\[\\{\\},]");
+
+        String[] splitResult = splitPattern.split(text);
         if (splitResult.length == 0) {
             return EMPTY_RESULT;
         }
@@ -66,7 +75,7 @@ public class Tweet {
     }
 
     public List<String> getRealWords() {
-        List<String> remove = new ArrayList<String>();
+        List<String> remove = new ArrayList<>();
         List<String> words = getWords();
         for (String s : words) {
             if (NotReal(s)) {
@@ -79,11 +88,12 @@ public class Tweet {
     }
 
     private boolean NotReal(String s) {
-        return s.startsWith("@") || s.equals("RT") || s.startsWith("http") || s.contains("8") || s.length() < 2;
+        return s.length() < MIN_WORD_LENGTH || badPattern.matcher(s).matches();
     }
 
     public String toFileStr() {
-        Object[] args = new Object[]{created, id, text.replace('\n', ' ')};
+        String cleanText = lineBreakPattern.matcher(text).replaceAll("");
+        Object[] args = new Object[]{created, id, cleanText};
         return formatter.format(args);
     }
 

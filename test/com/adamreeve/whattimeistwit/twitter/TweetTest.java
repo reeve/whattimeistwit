@@ -1,5 +1,6 @@
 package com.adamreeve.whattimeistwit.twitter;
 
+import com.adamreeve.whattimeistwit.twitter.tweet.Tweet;
 import org.junit.Test;
 
 import java.util.Calendar;

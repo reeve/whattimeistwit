@@ -1,6 +1,6 @@
-package com.adamreeve.whattimeistwit.analysis;
+package com.adamreeve.whattimeistwit.analysis.classifiers;
 
-import com.adamreeve.whattimeistwit.twitter.Tweet;
+import com.adamreeve.whattimeistwit.twitter.tweet.Tweet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,20 +15,20 @@ import java.util.Set;
  * Date: 7/4/12
  * Time: 11:06 PM
  */
-public class GeneralLanguageClassifier implements LanguageClassifier {
+public class WordListLanguageClassifier implements LanguageClassifier {
 
-    private static Logger logger = LoggerFactory.getLogger(GeneralLanguageClassifier.class);
+    private static Logger logger = LoggerFactory.getLogger(WordListLanguageClassifier.class);
 
     private String language;
     private Set<String> dictionary;
     private static final String basePath = "D:\\Data\\Adam\\Temp\\dicts";
 
-    public GeneralLanguageClassifier(String language, Set<String> dictionary) {
+    public WordListLanguageClassifier(String language, Set<String> dictionary) {
         this.language = language;
         this.dictionary = dictionary;
     }
 
-    public GeneralLanguageClassifier(String language, String dictPath) {
+    public WordListLanguageClassifier(String language, String dictPath) {
         this.language = language;
         this.dictionary = loadDictionary(dictPath);
     }

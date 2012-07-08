@@ -9,6 +9,8 @@ import java.util.Map;
  */
 public class ClassificationSet {
 
+    public static final double MIN_CONFIDENCE = 0.5;
+    public static final double MIN_DELTA = 0.1;
     private Map<String, Float> certaintyMap = new HashMap<>();
 
     public void setCertainty(String lang, Float value) {
@@ -21,18 +23,21 @@ public class ClassificationSet {
 
     public Classification getBestMatch() {
         Float best = 0f;
+        Float second = 0f;
         String bestLang = null;
         for (Map.Entry<String, Float> entry : certaintyMap.entrySet()) {
             Float value = entry.getValue();
-            if (value > best) {
+            if (value >= best) {
+                second = best;
                 best = value;
                 bestLang = entry.getKey();
             }
         }
-        if (best >= 0.5) {
+        float delta = best - second;
+        if (best >= MIN_CONFIDENCE && (delta >= MIN_DELTA)) {
             return new Classification(bestLang, best);
         } else {
-            return new Classification(Classification.UNKNOWN, 1 - best);
+            return new Classification(Classification.UNKNOWN, delta);
         }
     }
 

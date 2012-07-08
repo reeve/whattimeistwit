@@ -1,6 +1,4 @@
-package com.adamreeve.whattimeistwit.analysis;
-
-import com.adamreeve.whattimeistwit.twitter.Tweet;
+package com.adamreeve.whattimeistwit.twitter.tweet;
 
 import java.io.BufferedReader;
 import java.io.File;

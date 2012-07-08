@@ -1,6 +1,11 @@
 package com.adamreeve.whattimeistwit.analysis;
 
-import com.adamreeve.whattimeistwit.twitter.Tweet;
+import com.adamreeve.whattimeistwit.analysis.classifiers.CharSetLanguageClassifier;
+import com.adamreeve.whattimeistwit.analysis.classifiers.LanguageClassifier;
+import com.adamreeve.whattimeistwit.analysis.classifiers.WordListLanguageClassifier;
+import com.adamreeve.whattimeistwit.twitter.tweet.SimpleFileTweetSource;
+import com.adamreeve.whattimeistwit.twitter.tweet.Tweet;
+import com.adamreeve.whattimeistwit.twitter.tweet.TweetSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,7 +39,7 @@ public class ClassificationProcessor {
     private void Test() {
 
 
-        Tweet tweet = new Tweet(new Date(), "@tis_beth_x just wanted to let u know that I'm not to shy to talk to u haha :) how are u?", 1l);
+        Tweet tweet = new Tweet(new Date(), " RT @jennagingerelli: I miss hannah montana so much. #bringitback", 1l);
 
         ClassificationSet scores = new ClassificationSet();
 
@@ -49,32 +54,37 @@ public class ClassificationProcessor {
     }
 
     private void naiveRun(TweetSource source, List<LanguageClassifier> classifiers) {
+        PeriodSummary ps = new PeriodSummary();
         for (Tweet tweet : source) {
             ClassificationSet tc = new ClassificationSet();
             for (LanguageClassifier classifier : classifiers) {
                 tc.setCertainty(classifier.getLanguage(), classifier.classify(tweet));
             }
             logger.info(String.format("%s : %s", tc.getBestMatch().toSimpleString(), tweet.getText()));
+            ps.add(tweet.getCreated(), tc.getBestMatch().getLanguage());
         }
-
+        logger.info(ps.toString());
     }
 
     private List<LanguageClassifier> getClassifiers() {
         List<LanguageClassifier> result = new ArrayList<>();
 
-        result.add(new GeneralLanguageClassifier("EN", "2of12inf.txt"));
-        result.add(new GeneralLanguageClassifier("FR", "liste_mots.txt"));
-        result.add(new GeneralLanguageClassifier("ES", "words.spanish.txt"));
-        result.add(new GeneralLanguageClassifier("AF", "words.afrikaans.txt"));
-        result.add(new GeneralLanguageClassifier("CS", "words.czech.txt"));
-        result.add(new GeneralLanguageClassifier("DA", "words.danish.txt"));
-//        result.add(new GeneralLanguageClassifier("FI", "words.finnish.txt"));
-        result.add(new GeneralLanguageClassifier("HR", "words.croatian.txt"));
-        result.add(new GeneralLanguageClassifier("IT", "words.italian.txt"));
-        result.add(new GeneralLanguageClassifier("NL", "words.dutch.txt"));
-        result.add(new GeneralLanguageClassifier("NO", "words.norwegian.txt"));
-//        result.add(new GeneralLanguageClassifier("PL", "words.polish.txt"));
-        result.add(new GeneralLanguageClassifier("SV", "words.swedish.txt"));
+        result.add(new WordListLanguageClassifier("EN", "2of12inf.txt"));
+        result.add(new WordListLanguageClassifier("FR", "liste_mots.txt"));
+        result.add(new WordListLanguageClassifier("ES", "words.spanish.txt"));
+//        result.add(new WordListLanguageClassifier("ES", "es_30K.txt"));
+        result.add(new WordListLanguageClassifier("AF", "words.afrikaans.txt"));
+        result.add(new WordListLanguageClassifier("CS", "words.czech.txt"));
+        result.add(new WordListLanguageClassifier("DA", "words.danish.txt"));
+//        result.add(new WordListLanguageClassifier("FI", "words.finnish.txt"));
+        result.add(new WordListLanguageClassifier("HR", "words.croatian.txt"));
+        result.add(new WordListLanguageClassifier("IT", "words.italian.txt"));
+        result.add(new WordListLanguageClassifier("NL", "words.dutch.txt"));
+        result.add(new WordListLanguageClassifier("NO", "words.norwegian.txt"));
+//        result.add(new WordListLanguageClassifier("PL", "words.polish.txt"));
+        result.add(new WordListLanguageClassifier("SV", "words.swedish.txt"));
+        result.add(new CharSetLanguageClassifier("JP", new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0x3040, 0x309F)}));
+        result.add(new CharSetLanguageClassifier("CN", new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0x4E00, 0x9FFF)}, new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0x3040, 0x309F)}));
 
         return result;
     }

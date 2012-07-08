@@ -21,6 +21,7 @@ import java.util.List;
 public class ClassificationProcessor {
 
     private static Logger logger = LoggerFactory.getLogger(ClassificationProcessor.class);
+    private static final int BATCH_EVERY = 1000;
 
     public static void main(String[] args) {
         ClassificationProcessor processor = new ClassificationProcessor();
@@ -54,16 +55,34 @@ public class ClassificationProcessor {
     }
 
     private void naiveRun(TweetSource source, List<LanguageClassifier> classifiers) {
+        List<PeriodSummary> periods = new ArrayList<>();
+
         PeriodSummary ps = new PeriodSummary();
+        periods.add(ps);
+
+        int count = 0;
         for (Tweet tweet : source) {
+            count++;
+
             ClassificationSet tc = new ClassificationSet();
             for (LanguageClassifier classifier : classifiers) {
                 tc.setCertainty(classifier.getLanguage(), classifier.classify(tweet));
             }
-            logger.info(String.format("%s : %s", tc.getBestMatch().toSimpleString(), tweet.getText()));
+
+            logger.debug(String.format("%s : %s", tc.getBestMatch().toSimpleString(), tweet.getText()));
+
             ps.add(tweet.getCreated(), tc.getBestMatch().getLanguage());
+
+            if (count % BATCH_EVERY == 0) {
+                logger.info("Starting new period");
+                ps = new PeriodSummary();
+                periods.add(ps);
+            }
         }
-        logger.info(ps.toString());
+
+        for (PeriodSummary period : periods) {
+            logger.info(period.toString());
+        }
     }
 
     private List<LanguageClassifier> getClassifiers() {

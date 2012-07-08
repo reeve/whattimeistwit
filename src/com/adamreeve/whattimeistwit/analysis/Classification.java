@@ -1,41 +1,37 @@
 package com.adamreeve.whattimeistwit.analysis;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * Date: 7/4/12
- * Time: 10:45 PM
+ * Date: 7/7/12
+ * Time: 7:15 PM
  */
 public class Classification {
+    private String language;
+    private Float certainty;
 
-    private Map<String, Float> certaintyMap = new HashMap<>();
+    public static final String UNKNOWN = "UN";
 
-    public void setCertainty(String lang, Float value) {
-        certaintyMap.put(lang, value);
+    public Classification(String language, Float certainty) {
+        this.language = language;
+        this.certainty = certainty;
     }
 
-    public Float getCertainty(String lang) {
-        return certaintyMap.get(lang);
+    public String getLanguage() {
+        return language;
     }
 
-    public String getBestMatchLang() {
-        Float best = 0f;
-        String bestLang = null;
-        for (Map.Entry<String, Float> entry : certaintyMap.entrySet()) {
-            Float value = entry.getValue();
-            if (value > best) {
-                best = value;
-                bestLang = entry.getKey();
-            }
-        }
-        return bestLang;
+    public Float getCertainty() {
+        return certainty;
+    }
+
+    public String toSimpleString() {
+        return String.format("%s|%3.0f%%", language, certainty * 100);
     }
 
     @Override
     public String toString() {
         return "Classification{" +
-                "certaintyMap=" + certaintyMap +
+                "language='" + language + '\'' +
+                ", certainty=" + certainty +
                 '}';
     }
 }

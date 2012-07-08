@@ -19,6 +19,7 @@ public class Tweet {
 
     private static final String FORMAT = "{0,date,yyyyMMdd HH:mm:ss}|{1,number,###}|{2}";
     private static final MessageFormat formatter = new MessageFormat(FORMAT);
+    public static final ArrayList<String> EMPTY_RESULT = new ArrayList<>();
     private Date created;
     private String text;
     private Long id;
@@ -53,7 +54,15 @@ public class Tweet {
     }
 
     public List<String> getWords() {
-        return new ArrayList<>(Arrays.asList(text.split("[ \\.\\-\\?!\\(\\)\\|\\]\\[\\{\\}\\,]")));
+        if (text == null) {
+            return EMPTY_RESULT;
+        }
+        String[] splitResult = text.split("[ \\.\\-\\?!\\(\\)\\|\\]\\[\\{\\},]");
+        if (splitResult.length == 0) {
+            return EMPTY_RESULT;
+        }
+
+        return new ArrayList<>(Arrays.asList(splitResult));
     }
 
     public List<String> getRealWords() {

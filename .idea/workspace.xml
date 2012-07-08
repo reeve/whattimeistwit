@@ -2,24 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="273f561f-7105-4088-bae4-859a5644197a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/adamreeve/whattimeistwit/twitter" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/adamreeve/whattimeistwit" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/log-all.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/SimpleFileTweetSource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/TweetSource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/adamreeve/whattimeistwit/twitter/TweetTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationSet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WhatTimeIsTwit.iml" afterPath="$PROJECT_DIR$/WhatTimeIsTwit.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/log.properties" afterPath="$PROJECT_DIR$/config/log.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/Classification.java" afterPath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/Classification.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationProcessor.java" afterPath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationProcessor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/GeneralLanguageClassifier.java" afterPath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/GeneralLanguageClassifier.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/Tweet.java" afterPath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/Tweet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/FileWriterStatusListener.java" afterPath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/FileWriterStatusListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/TwitterStreamClient.java" afterPath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/TwitterStreamClient.java" />
     </list>
     <ignored path="twitclock.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,21 +25,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/GeneralLanguageClassifier.java" line="52" class="com.adamreeve.whattimeistwit.analysis.GeneralLanguageClassifier" package="com.adamreeve.whattimeistwit.analysis">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -95,19 +68,28 @@
       <file leaf-file-name="GeneralLanguageClassifier.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/GeneralLanguageClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="52" selection-start="1311" selection-end="1311" vertical-scroll-proportion="0.0">
+            <state line="37" column="0" selection-start="1145" selection-end="1145" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassificationProcessor.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ClassificationProcessor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="74" selection-start="1028" selection-end="1028" vertical-scroll-proportion="0.0">
+            <state line="47" column="61" selection-start="1539" selection-end="1539" vertical-scroll-proportion="0.5043732">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tweet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/Tweet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="9" selection-start="1969" selection-end="1969" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -130,10 +112,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tweet.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/Tweet.java">
+      <file leaf-file-name="ClassificationSet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="93" selection-start="1429" selection-end="1429" vertical-scroll-proportion="0.6131148">
+            <state line="31" column="19" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Classification.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/Classification.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="40" selection-start="575" selection-end="575" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -149,7 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/TestClient.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/record/Tweet.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/LanguageClassifier.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/AbstractLanguageClassifier.java" />
@@ -160,11 +152,12 @@
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/FileWriterStatusListener.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/TwitterStreamClient.java" />
         <option value="$PROJECT_DIR$/test/com/adamreeve/whattimeistwit/twitter/TweetTest.java" />
-        <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/Classification.java" />
         <option value="$PROJECT_DIR$/config/log.properties" />
+        <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/Classification.java" />
+        <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationSet.java" />
+        <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/Tweet.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/GeneralLanguageClassifier.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationProcessor.java" />
-        <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/Tweet.java" />
       </list>
     </option>
   </component>
@@ -442,7 +435,7 @@
       <recent name="com.adamreeve.whattimeistwit.twitter.download" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClassificationProcessor">
+  <component name="RunManager" selected="Application.ClassificationProcessor - Single">
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -673,7 +666,11 @@
       <created>1341461376100</created>
       <updated>1341461376100</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added TweetSource &amp; file readers&#10;updated test code&#10;">
+      <created>1341701545112</created>
+      <updated>1341701545112</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -683,19 +680,19 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986766" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39981097" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39981097" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986766" sideWeight="0.5006443" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986766" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986766" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21649484" sideWeight="0.23156899" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21649484" sideWeight="0.13327032" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21649484" sideWeight="0.36200377" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.32986766" sideWeight="0.49484536" order="2" side_tool="false" content_ui="tabs" x="1612" y="23" width="1552" height="1131" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21649484" sideWeight="0.2079395" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.65217394" sideWeight="0.49484536" order="2" side_tool="false" content_ui="tabs" x="1612" y="23" width="1552" height="1131" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -742,7 +739,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="better shutdown semantics for listeners&#10;impl of basic language classification&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="added TweetSource &amp; file readers&#10;updated test code&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -758,6 +755,7 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="split out writer implementations&#10;first cut of file writer" />
     <MESSAGE value="better shutdown semantics for listeners&#10;impl of basic language classification&#10;" />
+    <MESSAGE value="added TweetSource &amp; file readers&#10;updated test code&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -767,11 +765,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/CloseableStatusListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="149" selection-end="149" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/DebugStatusListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="16" selection-start="1278" selection-end="1278" vertical-scroll-proportion="0.0" />
@@ -815,25 +808,7 @@
     <entry file="file://$PROJECT_DIR$/test/com/adamreeve/whattimeistwit/twitter/TweetTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="66" selection-start="494" selection-end="494" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/TwitterStreamClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="46" selection-start="425" selection-end="425" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/Classification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="31" selection-start="672" selection-end="672" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -858,16 +833,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/GeneralLanguageClassifier.java">
+    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/TwitterStreamClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="52" selection-start="1311" selection-end="1311" vertical-scroll-proportion="0.0">
+        <state line="17" column="46" selection-start="425" selection-end="425" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationProcessor.java">
+    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/Classification.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="74" selection-start="1028" selection-end="1028" vertical-scroll-proportion="0.0">
+        <state line="26" column="40" selection-start="575" selection-end="575" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="19" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -876,8 +858,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/Tweet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="93" selection-start="1429" selection-end="1429" vertical-scroll-proportion="0.6131148">
+        <state line="74" column="9" selection-start="1969" selection-end="1969" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/GeneralLanguageClassifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="0" selection-start="1145" selection-end="1145" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="61" selection-start="1539" selection-end="1539" vertical-scroll-proportion="0.5043732">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

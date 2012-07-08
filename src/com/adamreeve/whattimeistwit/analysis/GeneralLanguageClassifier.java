@@ -21,6 +21,7 @@ public class GeneralLanguageClassifier implements LanguageClassifier {
 
     private String language;
     private Set<String> dictionary;
+    private static final String basePath = "D:\\Data\\Adam\\Temp\\dicts";
 
     public GeneralLanguageClassifier(String language, Set<String> dictionary) {
         this.language = language;
@@ -32,7 +33,9 @@ public class GeneralLanguageClassifier implements LanguageClassifier {
         this.dictionary = loadDictionary(dictPath);
     }
 
-    private Set<String> loadDictionary(String dictPath) {
+    private Set<String> loadDictionary(String fileName) {
+        String dictPath = String.format("%s\\%s\\%s", basePath, language.toLowerCase(), fileName);
+
         logger.info("Loading dictionary from " + dictPath);
 
         Set<String> result = new HashSet<>(1000);

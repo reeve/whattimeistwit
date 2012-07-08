@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class ClassificationSet {
 
-    public static final double MIN_CONFIDENCE = 0.5;
+    public static final double MIN_CONFIDENCE = 0.2;
     public static final double MIN_DELTA = 0.1;
     private Map<String, Float> certaintyMap = new HashMap<>();
 

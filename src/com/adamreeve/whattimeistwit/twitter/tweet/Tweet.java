@@ -20,7 +20,7 @@ public class Tweet {
 
     private static final String FORMAT = "{0,date,yyyyMMdd HH:mm:ss}|{1,number,###}|{2}";
     private static final MessageFormat formatter = new MessageFormat(FORMAT);
-    private static final Pattern splitPattern = Pattern.compile("[ \\.\\-\\?!\\(\\)\\|\\]\\[\\{\\},']");
+    private static final Pattern splitPattern = Pattern.compile("[ \\.\\-\\?!\\(\\)\\|\\]\\[\\{\\},'\"]");
     private static final Pattern badPattern = Pattern.compile("RT|@\\S*|http://\\S*|\\S*[0..9]+\\S*");
     private static final Pattern lineBreakPattern = Pattern.compile("\\n|\\r");
 

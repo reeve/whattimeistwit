@@ -39,7 +39,7 @@ public class ClassificationProcessor {
     private void Test() {
 
 
-        Tweet tweet = new Tweet(new Date(), " RT @jennagingerelli: I miss hannah montana so much. #bringitback", 1l);
+        Tweet tweet = new Tweet(new Date(), "Ésto de sentirse solo. No es bonito.", 1l);
 
         ClassificationSet scores = new ClassificationSet();
 
@@ -71,7 +71,8 @@ public class ClassificationProcessor {
 
         result.add(new WordListLanguageClassifier("EN", "2of12inf.txt"));
         result.add(new WordListLanguageClassifier("FR", "liste_mots.txt"));
-        result.add(new WordListLanguageClassifier("ES", "words.spanish.txt"));
+        result.add(new WordListLanguageClassifier("ES", "es.dic"));
+        result.add(new WordListLanguageClassifier("DE", "de_neu.dic"));
 //        result.add(new WordListLanguageClassifier("ES", "es_30K.txt"));
         result.add(new WordListLanguageClassifier("AF", "words.afrikaans.txt"));
         result.add(new WordListLanguageClassifier("CS", "words.czech.txt"));
@@ -85,6 +86,13 @@ public class ClassificationProcessor {
         result.add(new WordListLanguageClassifier("SV", "words.swedish.txt"));
         result.add(new CharSetLanguageClassifier("JP", new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0x3040, 0x309F)}));
         result.add(new CharSetLanguageClassifier("CN", new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0x4E00, 0x9FFF)}, new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0x3040, 0x309F)}));
+        result.add(new CharSetLanguageClassifier("TH", new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0x0E00, 0x0E7F)}));
+        result.add(new CharSetLanguageClassifier("AR", new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0x0600, 0x06FF)}));
+        result.add(new CharSetLanguageClassifier("KO", new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0xAC00, 0xD7AF)}));
+        result.add(new WordListLanguageClassifier("PT", "portugueseU.dic"));
+        result.add(new WordListLanguageClassifier("ID", "00-indonesian-wordlist.lst"));
+//        result.add(new WordListLanguageClassifier("BR", "br.dic"));
+
 
         return result;
     }

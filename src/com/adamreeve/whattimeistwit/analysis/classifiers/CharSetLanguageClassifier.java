@@ -24,23 +24,27 @@ public class CharSetLanguageClassifier implements LanguageClassifier {
 
     @Override
     public Float classify(Tweet tweet) {
-        String text = tweet.getText();
-
         int matches = 0;
-        for (int i = 0; i < text.length(); i++) {
-            char c = text.charAt(i);
-            for (int j = 0; j < ranges.length; j++) {
-                if (c >= ranges[j].min && c <= ranges[j].max) {
-                    matches++;
+        int total = 0;
+        for (String word : tweet.getRealWords()) {
+            for (int i = 0; i < word.length(); i++) {
+                total++;
+                char c = word.charAt(i);
+
+                for (int j = 0; j < ranges.length; j++) {
+                    if (c >= ranges[j].min && c <= ranges[j].max) {
+                        matches++;
+                    }
                 }
-            }
-            for (int j = 0; j < negRanges.length; j++) {
-                if (c >= negRanges[j].min && c <= negRanges[j].max) {
-                    return 0f;
+                for (int j = 0; j < negRanges.length; j++) {
+                    if (c >= negRanges[j].min && c <= negRanges[j].max) {
+                        return 0f;
+                    }
                 }
             }
         }
-        return (float) matches / text.length();
+
+        return (float) matches / total;
     }
 
     @Override

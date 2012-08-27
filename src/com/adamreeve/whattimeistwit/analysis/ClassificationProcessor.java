@@ -21,7 +21,7 @@ import java.util.List;
 public class ClassificationProcessor {
 
     private static Logger logger = LoggerFactory.getLogger(ClassificationProcessor.class);
-    private static final int BATCH_EVERY = 1000;
+    private static final int BATCH_EVERY = 10000;
 
     public static void main(String[] args) {
         ClassificationProcessor processor = new ClassificationProcessor();

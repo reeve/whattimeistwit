@@ -2,8 +2,8 @@ package com.adamreeve.whattimeistwit.analysis;
 
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 /**
  * Date: 7/7/12
@@ -14,7 +14,7 @@ public class PeriodSummary {
     private Date start = new Date(Long.MAX_VALUE);
     private Date end = new Date(Long.MIN_VALUE);
     private double total;
-    private Map<String, Double> countMap = new HashMap<>();
+    private SortedMap<String, Double> countMap = new TreeMap<>();
 
     public void add(Date timeStamp, String language) {
         total++;

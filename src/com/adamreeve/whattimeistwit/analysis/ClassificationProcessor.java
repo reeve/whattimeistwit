@@ -40,7 +40,7 @@ public class ClassificationProcessor {
     private void Test() {
 
 
-        Tweet tweet = new Tweet(new Date(), "Ésto de sentirse solo. No es bonito.", 1l);
+        Tweet tweet = new Tweet(new Date(), "The offspring (?) Cody mckenzie's entrance music with ronda rousey in the corner #garbage #dfsdfgdsfg", 1l);
 
         ClassificationSet scores = new ClassificationSet();
 

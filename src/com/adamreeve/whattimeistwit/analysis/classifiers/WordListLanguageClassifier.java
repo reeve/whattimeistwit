@@ -8,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -60,13 +59,12 @@ public class WordListLanguageClassifier implements LanguageClassifier {
 
     @Override
     public Float classify(Tweet tweet) {
-        List<String> words = tweet.getRealWords();
-
+        Set<String> words = tweet.getRealWordsInLowerCase();
         Set<String> dictionary = getDictionary();
 
         int matches = 0;
         for (String word : words) {
-            if (dictionary.contains(word.toLowerCase())) {
+            if (dictionary.contains(word)) {
                 matches++;
                 if (logger.isDebugEnabled()) {
                     logger.debug(word + ":match");

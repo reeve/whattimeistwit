@@ -5,10 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import java.text.MessageFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -21,7 +18,7 @@ public class Tweet {
     private static final String FORMAT = "{0,date,yyyyMMdd HH:mm:ss}|{1,number,###}|{2}";
     private static final MessageFormat formatter = new MessageFormat(FORMAT);
     private static final Pattern splitPattern = Pattern.compile("[ \\.\\-\\?!\\(\\)\\|\\]\\[\\{\\},'\"]");
-    private static final Pattern badPattern = Pattern.compile("RT|@\\S*|http://\\S*|\\S*[0..9]+\\S*");
+    private static final Pattern badPattern = Pattern.compile("RT|@\\S*|http://\\S*|\\S*[0..9]+\\S*|#\\S*");
     private static final Pattern lineBreakPattern = Pattern.compile("\\n|\\r");
 
     private static final int MIN_WORD_LENGTH = 3;
@@ -30,7 +27,7 @@ public class Tweet {
     private String text;
     private Long id;
 
-    public static final ArrayList<String> EMPTY_RESULT = new ArrayList<>();
+    public static final HashSet<String> EMPTY_RESULT = new HashSet<>();
 
     public Tweet(String fileStr) {
         try {
@@ -61,7 +58,7 @@ public class Tweet {
         return id;
     }
 
-    public List<String> getWords() {
+    public Set<String> getWordsInLowerCase() {
         if (text == null) {
             return EMPTY_RESULT;
         }
@@ -71,12 +68,16 @@ public class Tweet {
             return EMPTY_RESULT;
         }
 
-        return new ArrayList<>(Arrays.asList(splitResult));
+        for (int i = 0; i < splitResult.length; i++) {
+            splitResult[i] = splitResult[i].toLowerCase();
+        }
+
+        return new HashSet<>(Arrays.asList(splitResult));
     }
 
-    public List<String> getRealWords() {
+    public Set<String> getRealWordsInLowerCase() {
         List<String> remove = new ArrayList<>();
-        List<String> words = getWords();
+        Set<String> words = getWordsInLowerCase();
         for (String s : words) {
             if (NotReal(s)) {
                 remove.add(s);

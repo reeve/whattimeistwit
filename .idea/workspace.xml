@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="273f561f-7105-4088-bae4-859a5644197a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/ivy.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/ivy.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WhatTimeIsTwit.iml" afterPath="$PROJECT_DIR$/WhatTimeIsTwit.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationProcessor.java" afterPath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationProcessor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/PeriodSummary.java" afterPath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/PeriodSummary.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/tweet/Tweet.java" afterPath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/tweet/Tweet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/TwitterStreamClient.java" afterPath="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/TwitterStreamClient.java" />
     </list>
     <ignored path="twitclock.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,75 +67,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LanguageClassifier.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/classifiers/LanguageClassifier.java">
+      <file leaf-file-name="ivy.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/ivy.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="17" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassificationSet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationSet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="51" selection-start="224" selection-end="224" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CharSetLanguageClassifier.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/classifiers/CharSetLanguageClassifier.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="643" selection-end="643" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassificationProcessor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationProcessor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="21" selection-start="2922" selection-end="2922" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PeriodSummary.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/PeriodSummary.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="37" selection-start="1125" selection-end="1125" vertical-scroll-proportion="0.58736426">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileWriterStatusListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/FileWriterStatusListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="31" selection-start="2130" selection-end="2130" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tweet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/tweet/Tweet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="948" selection-end="948" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WordListLanguageClassifier.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/classifiers/WordListLanguageClassifier.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="26" selection-start="2161" selection-end="2161" vertical-scroll-proportion="0.0">
+            <state line="7" column="77" selection-start="477" selection-end="477" vertical-scroll-proportion="0.09347997">
               <folding />
             </state>
           </provider>
@@ -145,33 +83,56 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="GradleLocalSettings">
+    <option name="expandStates">
+      <map>
+        <entry key="WhatTimeIsTwit" value="true" />
+      </map>
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/TweetSource.java" />
-        <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/FileTweetSource.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/SimpleFileTweetSource.java" />
         <option value="$PROJECT_DIR$/test/com/adamreeve/whattimeistwit/twitter/TweetTest.java" />
         <option value="$PROJECT_DIR$/config/log.properties" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/Classification.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/GeneralLanguageClassifier.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/Tweet.java" />
-        <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/TwitterStreamClient.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/FileWriterStatusListener.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationSet.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/classifiers/CharSetLanguageClassifier.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/classifiers/WordListLanguageClassifier.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/tweet/Tweet.java" />
-        <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationProcessor.java" />
         <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/PeriodSummary.java" />
+        <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationProcessor.java" />
+        <option value="$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/TwitterStreamClient.java" />
+        <option value="$PROJECT_DIR$/config/ivy.properties" />
+        <option value="$PROJECT_DIR$/config/ivy.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="1216" />
+    <option name="width" value="2576" />
+    <option name="height" value="1456" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -199,12 +160,30 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WhatTimeIsTwit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WhatTimeIsTwit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="WhatTimeIsTwit" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -257,6 +236,96 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adamreeve" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whattimeistwit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="twitter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WhatTimeIsTwit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whattimeistwit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adamreeve" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whattimeistwit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="twitter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="download" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WhatTimeIsTwit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whattimeistwit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adamreeve" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whattimeistwit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WhatTimeIsTwit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whattimeistwit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -273,32 +342,18 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WhatTimeIsTwit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WhatTimeIsTwit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="161" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="142" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="35" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="166" />
     <property name="OverrideImplement.combined" value="true" />
-    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="166" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
@@ -315,22 +370,22 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="172" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5" value="846" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5" value="846" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/test" />
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/test" />
+    <property name="options.lastSelected" value="org.clarent.ivyidea.intellij.ui.IvyIdeaProjectSettingsComponent" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5" value="5" />
-    <property name="options.lastSelected" value="preferences.sourceCode.Java" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="options.searchVisible" value="true" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -348,7 +403,7 @@
       <recent name="com.adamreeve.whattimeistwit.twitter.download" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClassificationProcessor">
+  <component name="RunManager" selected="Application.TwitterStreamClient">
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -609,28 +664,33 @@
       <created>1346035792113</created>
       <updated>1346035792113</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="updated import settings &amp; reformatted&#10;sort period output alphabetically&#10;">
+      <created>1346036539100</created>
+      <updated>1346036539100</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="1216" extended-state="6" />
+    <frame x="-8" y="-8" width="2576" height="1456" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.6702619" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39981097" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986766" sideWeight="0.5006443" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39060092" sideWeight="0.5039809" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14570063" sideWeight="0.53775036" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="IvyIDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32973805" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986766" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986766" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23582475" sideWeight="0.63705105" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14570063" sideWeight="0.49306625" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23582475" sideWeight="0.3563327" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47920606" sideWeight="0.49484536" order="2" side_tool="false" content_ui="tabs" x="1612" y="23" width="1552" height="1131" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14570063" sideWeight="0.6702619" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39060092" sideWeight="0.4932325" order="2" side_tool="false" content_ui="tabs" x="1612" y="23" width="1552" height="1131" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986766" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -678,7 +738,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="ignore hashtags&#10;ignore duplicate words&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated import settings &amp; reformatted&#10;sort period output alphabetically&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -699,6 +759,7 @@
     <MESSAGE value="added mroe languages&#10;improved char set matcher so it ignores non-real words&#10;ignore quotes&#10;lowered min confidence to include more matches&#10;" />
     <MESSAGE value="break periods based on tweet count&#10;" />
     <MESSAGE value="ignore hashtags&#10;ignore duplicate words&#10;" />
+    <MESSAGE value="updated import settings &amp; reformatted&#10;sort period output alphabetically&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -708,16 +769,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/org/junit/Assert.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="27" selection-start="908" selection-end="908" vertical-scroll-proportion="0.3478261" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/adamreeve/whattimeistwit/twitter/TweetTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="66" selection-start="494" selection-end="494" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/log-all.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -743,33 +794,9 @@
         <state line="738" column="30" selection-start="27663" selection-end="27663" vertical-scroll-proportion="10.844312" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/TwitterStreamClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="47" selection-start="426" selection-end="426" vertical-scroll-proportion="0.19748306" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/classifiers/LanguageClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="17" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/classifiers/CharSetLanguageClassifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="643" selection-end="643" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/FileWriterStatusListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="31" selection-start="2130" selection-end="2130" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/tweet/Tweet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="948" selection-end="948" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationSet.java">
@@ -777,23 +804,53 @@
         <state line="11" column="51" selection-start="224" selection-end="224" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/classifiers/WordListLanguageClassifier.java">
+    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/classifiers/CharSetLanguageClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="26" selection-start="2161" selection-end="2161" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="21" selection-start="2922" selection-end="2922" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="23" column="0" selection-start="643" selection-end="643" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/PeriodSummary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="37" selection-start="1125" selection-end="1125" vertical-scroll-proportion="0.58736426">
+        <state line="2" column="0" selection-start="48" selection-end="48" vertical-scroll-proportion="0.032913845" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/FileWriterStatusListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="31" selection-start="2130" selection-end="2130" vertical-scroll-proportion="0.29235238" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/tweet/Tweet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="53" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.016456923" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/classifiers/WordListLanguageClassifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="26" selection-start="2161" selection-end="2161" vertical-scroll-proportion="0.44046468" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/analysis/ClassificationProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="88" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.016666668" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/adamreeve/whattimeistwit/twitter/download/TwitterStreamClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="13" selection-start="1049" selection-end="1049" vertical-scroll-proportion="0.6236686">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/ivy.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="43" selection-start="43" selection-end="43" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/ivy.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="77" selection-start="477" selection-end="477" vertical-scroll-proportion="0.09347997">
           <folding />
         </state>
       </provider>
@@ -815,7 +872,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited>IvyIDEA (WhatTimeIsTwit)|IvyIDEA</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -851,12 +908,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>WhatTimeIsTwit</last-edited>
+          <last-edited>IvyIDEA|WhatTimeIsTwit</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

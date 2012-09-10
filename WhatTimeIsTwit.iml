@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="IvyIDEA" name="IvyIDEA">
+      <configuration ivyFile="D:\Data\Adam\My Documents\java\whattimeistwit\config\ivy.xml" useProjectSettings="true" useCustomIvySettings="true" ivySettingsFile="" onlyResolveSelectedConfigs="false">
+        <propertiesSettings>
+          <propertiesFiles includeProjectLevelPropertiesFiles="true" />
+        </propertiesSettings>
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
@@ -9,9 +18,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Twitter4J" level="application" />
-    <orderEntry type="library" name="SLF4J Core" level="application" />
-    <orderEntry type="library" name="SLF4J to JDK Logging" level="application" />
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
@@ -19,6 +25,34 @@
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="IvyIDEA">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.6.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.slf4j/slf4j-jdk14/jars/slf4j-jdk14-1.6.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-2.2.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/commons-logging/commons-logging-api/jars/commons-logging-api-1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/log4j/log4j/bundles/log4j-1.2.17.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.apache.openejb/javaee-api/jars/javaee-api-5.0-2.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-async/jars/twitter4j-async-2.2.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-stream/jars/twitter4j-stream-2.2.6.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.slf4j/slf4j-api/javadocs/slf4j-api-1.6.6-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.slf4j/slf4j-jdk14/javadocs/slf4j-jdk14-1.6.6-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-core/javadocs/twitter4j-core-2.2.6-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-async/javadocs/twitter4j-async-2.2.6-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-stream/javadocs/twitter4j-stream-2.2.6-javadoc.jar!/" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.slf4j/slf4j-api/sources/slf4j-api-1.6.6-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.slf4j/slf4j-jdk14/sources/slf4j-jdk14-1.6.6-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-core/sources/twitter4j-core-2.2.6-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-async/sources/twitter4j-async-2.2.6-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-stream/sources/twitter4j-stream-2.2.6-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>

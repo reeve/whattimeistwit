@@ -40,6 +40,27 @@
     <option name="HIDE_CLASSES_WHERE_METHOD_NOT_IMPLEMENTED" value="false" />
   </component>
   <component name="IdProvider" IDEtalkID="02877AB36C51CD38DD76349F27A8E3A7" />
+  <component name="IvyIDEA.ProjectSettings">
+    <option name="artifactTypeSettings">
+      <ArtifactTypeSettings>
+        <option name="classesTypes" value="jar, mar, sar, war, ear, ejb, bundle, test-jar" />
+        <option name="javadocTypes" value="javadoc, doc, docs, apidoc, apidocs, documentation, documents" />
+        <option name="sourcesTypes" value="source, src, sources, srcs" />
+      </ArtifactTypeSettings>
+    </option>
+    <option name="ivyLogLevelThreshold" value="Info" />
+    <option name="propertiesSettings">
+      <PropertiesSettings>
+        <option name="propertyFiles">
+          <list>
+            <option value="D:\Data\Adam\My Documents\java\whattimeistwit\config\ivy.properties" />
+          </list>
+        </option>
+      </PropertiesSettings>
+    </option>
+    <option name="useCustomIvySettings" value="false" />
+    <option name="validateIvyFiles" value="true" />
+  </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />
     <option name="OPTION_SCOPE" value="protected" />

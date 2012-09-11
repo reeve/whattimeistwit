@@ -30,28 +30,31 @@
     <orderEntry type="module-library">
       <library name="IvyIDEA">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.6.6.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.slf4j/slf4j-jdk14/jars/slf4j-jdk14-1.6.6.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-2.2.6.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/commons-logging/commons-logging-api/jars/commons-logging-api-1.1.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/log4j/log4j/bundles/log4j-1.2.17.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.apache.openejb/javaee-api/jars/javaee-api-5.0-2.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-async/jars/twitter4j-async-2.2.6.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-stream/jars/twitter4j-stream-2.2.6.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.6.6.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.slf4j/slf4j-jdk14/jars/slf4j-jdk14-1.6.6.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-2.2.6.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/commons-logging/commons-logging-api/jars/commons-logging-api-1.1.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/log4j/log4j/bundles/log4j-1.2.17.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.apache.openejb/javaee-api/jars/javaee-api-5.0-2.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-async/jars/twitter4j-async-2.2.6.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-stream/jars/twitter4j-stream-2.2.6.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/commons-cli/commons-cli/jars/commons-cli-1.2.jar!/" />
         </CLASSES>
         <JAVADOC>
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.slf4j/slf4j-api/javadocs/slf4j-api-1.6.6-javadoc.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.slf4j/slf4j-jdk14/javadocs/slf4j-jdk14-1.6.6-javadoc.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-core/javadocs/twitter4j-core-2.2.6-javadoc.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-async/javadocs/twitter4j-async-2.2.6-javadoc.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-stream/javadocs/twitter4j-stream-2.2.6-javadoc.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.slf4j/slf4j-api/javadocs/slf4j-api-1.6.6-javadoc.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.slf4j/slf4j-jdk14/javadocs/slf4j-jdk14-1.6.6-javadoc.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-core/javadocs/twitter4j-core-2.2.6-javadoc.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-async/javadocs/twitter4j-async-2.2.6-javadoc.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-stream/javadocs/twitter4j-stream-2.2.6-javadoc.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/commons-cli/commons-cli/javadocs/commons-cli-1.2-javadoc.jar!/" />
         </JAVADOC>
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.slf4j/slf4j-api/sources/slf4j-api-1.6.6-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.slf4j/slf4j-jdk14/sources/slf4j-jdk14-1.6.6-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-core/sources/twitter4j-core-2.2.6-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-async/sources/twitter4j-async-2.2.6-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../../Temp/ivy/cache/org.twitter4j/twitter4j-stream/sources/twitter4j-stream-2.2.6-sources.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.slf4j/slf4j-api/sources/slf4j-api-1.6.6-sources.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.slf4j/slf4j-jdk14/sources/slf4j-jdk14-1.6.6-sources.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-core/sources/twitter4j-core-2.2.6-sources.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-async/sources/twitter4j-async-2.2.6-sources.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-stream/sources/twitter4j-stream-2.2.6-sources.jar!/" />
+          <root url="jar://$IVY_DIR$/cache/commons-cli/commons-cli/sources/commons-cli-1.2-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>

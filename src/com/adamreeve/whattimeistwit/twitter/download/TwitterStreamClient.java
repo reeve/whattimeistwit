@@ -8,8 +8,7 @@ import twitter4j.TwitterStreamFactory;
 import java.io.IOException;
 
 /**
- * Date: 7/2/12
- * Time: 9:30 PM
+ * Date: 7/2/12 Time: 9:30 PM
  */
 public class TwitterStreamClient {
 
@@ -22,7 +21,7 @@ public class TwitterStreamClient {
 
         TwitterStreamClient client = new TwitterStreamClient();
         try {
-            client.runExtract(new FileWriterStatusListener("D:\\Data\\Adam\\Temp\\out.txt"));
+            client.runExtract(new FileWriterStatusListener("data\\out-12.txt"));
         } catch (IOException e) {
             logger.error("Exception running extract", e);
         }

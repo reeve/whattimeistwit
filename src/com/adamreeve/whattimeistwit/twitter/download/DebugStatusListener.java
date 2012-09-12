@@ -6,8 +6,7 @@ import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
 
 /**
- * Date: 7/4/12
- * Time: 6:30 PM
+ * Date: 7/4/12 Time: 6:30 PM
  */
 class DebugStatusListener implements CloseableStatusListener {
     static Logger logger = LoggerFactory.getLogger(DebugStatusListener.class);
@@ -37,5 +36,20 @@ class DebugStatusListener implements CloseableStatusListener {
     @Override
     public void close() {
         // no op
+    }
+
+    @Override
+    public int getCount() {
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void setMaxCount(int maxCount) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public boolean atLimit() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

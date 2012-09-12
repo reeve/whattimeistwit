@@ -12,20 +12,30 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Date: 7/4/12
- * Time: 6:48 PM
+ * Date: 7/4/12 Time: 6:48 PM
  */
 public class FileWriterStatusListener implements CloseableStatusListener {
     static Logger logger = LoggerFactory.getLogger(FileWriterStatusListener.class);
 
     private BufferedWriter writer;
     private int writeCount;
+    private int maxWriteCount;
+    private boolean atLimit = false;
     private static final int REPORT_EVERY = 100;
     private static final int LATENCY_LIMIT_MS = 5000;
 
     public FileWriterStatusListener(String filePath) throws IOException {
+        this(filePath, Integer.MAX_VALUE);
+    }
+
+    public FileWriterStatusListener(String filePath, int maxCount) throws IOException {
         File outputFile = new File(filePath);
-        logger.info("Output file is " + outputFile.getCanonicalPath());
+        logger.info(String.format("Output file is %s", outputFile.getCanonicalPath()));
+
+        maxWriteCount = maxCount;
+        logger.info(maxCount == Integer.MAX_VALUE
+                            ? "No limit set"
+                            : String.format("Stopping after %d writes", maxCount));
 
         if (outputFile.createNewFile()) {
             logger.info("Created new output file");
@@ -42,6 +52,11 @@ public class FileWriterStatusListener implements CloseableStatusListener {
 
     @Override
     public void onStatus(Status status) {
+
+        if (atLimit()) {
+            logger.debug(String.format("Skipping onStatus because maxCount of %d has been reached", maxWriteCount));
+            return;
+        }
 
         Tweet tweet = new Tweet(status.getCreatedAt(), status.getText(), status.getId());
 
@@ -66,6 +81,12 @@ public class FileWriterStatusListener implements CloseableStatusListener {
                 logger.error("Exception flushing output stream", e);
             }
         }
+
+        if (writeCount == maxWriteCount) {
+            logger.info("Reached limit of " + maxWriteCount);
+            atLimit = true;
+        }
+
     }
 
     @Override
@@ -91,10 +112,26 @@ public class FileWriterStatusListener implements CloseableStatusListener {
     @Override
     public void close() {
         try {
+            writer.flush();
             logger.info(String.format("Done - wrote %d records", writeCount));
             writer.close();
         } catch (IOException e) {
             logger.error("Exception closing output file", e);
         }
+    }
+
+    @Override
+    public int getCount() {
+        return writeCount;
+    }
+
+    @Override
+    public void setMaxCount(int maxCount) {
+        maxWriteCount = maxCount;
+    }
+
+    @Override
+    public boolean atLimit() {
+        return atLimit;
     }
 }

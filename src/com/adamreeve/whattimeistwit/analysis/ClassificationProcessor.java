@@ -6,41 +6,82 @@ import com.adamreeve.whattimeistwit.analysis.classifiers.WordListLanguageClassif
 import com.adamreeve.whattimeistwit.twitter.tweet.SimpleFileTweetSource;
 import com.adamreeve.whattimeistwit.twitter.tweet.Tweet;
 import com.adamreeve.whattimeistwit.twitter.tweet.TweetSource;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
- * Date: 7/4/12
- * Time: 11:28 PM
+ * Date: 7/4/12 Time: 11:28 PM
  */
 public class ClassificationProcessor {
 
     private static Logger logger = LoggerFactory.getLogger(ClassificationProcessor.class);
     private static final int BATCH_EVERY = 10000;
+    public static final int DEFAULT_PERIOD_SIZE = 60 * 5;
+
+    private static FileFilter fileFilter = new FileFilter() {
+        public boolean accept(File file) {
+            return file.isFile() && file.canRead();
+        }
+    };
 
     public static void main(String[] args) {
         ClassificationProcessor processor = new ClassificationProcessor();
 
-        if (args.length > 0 && args[0].equals("Single")) {
-            processor.Test();
-        } else {
-            try {
-                processor.naiveRun(new SimpleFileTweetSource("D:\\Data\\Adam\\Temp\\out.txt"), processor.getClassifiers());
-            } catch (IOException e) {
-                logger.error("Error starting up", e);
+        logger.info("Starting...");
+
+        CliOptions opts = new CliOptions();
+
+        try {
+            CommandLine commandLine = opts.parseCommandLine(args);
+
+            List<String> filenames = new ArrayList<>();
+
+            if (commandLine.hasOption(CliOptions.OPT_FILENAME)) {
+                filenames.add(commandLine.getOptionValue(CliOptions.OPT_FILENAME));
+            } else {
+                String dirName = commandLine.getOptionValue(CliOptions.OPT_DIRNAME);
+                File dir = new File(dirName);
+                if (dir.isDirectory()) {
+                    for (File file : dir.listFiles(fileFilter)) {
+                        try {
+                            filenames.add(file.getCanonicalPath());
+                        } catch (IOException e) {
+                            logger.error(String.format("Error processing file %s", file.getName()));
+                        }
+                    }
+                } else {
+                    throw new ParseException(String.format("%s is not a valid directory", dirName));
+                }
             }
+
+            int periodSecs = DEFAULT_PERIOD_SIZE;
+            if (commandLine.hasOption(CliOptions.OPT_PERIOD_SIZE)) {
+                periodSecs = ((Number) commandLine.getParsedOptionValue(CliOptions.OPT_PERIOD_SIZE)).intValue();
+            }
+
+            processor.naiveRun(new SimpleFileTweetSource("D:\\Data\\Adam\\Temp\\out-2.txt"),
+                               processor.getClassifiers());
+
+        } catch (ParseException e) {
+            logger.error("Error in command line", e);
+            opts.printHelpText();
+        } catch (IOException e) {
+            logger.error("Error running analysis", e);
         }
+
     }
 
     private void Test() {
-
-
-        Tweet tweet = new Tweet(new Date(), "The offspring (?) Cody mckenzie's entrance music with ronda rousey in the corner #garbage #dfsdfgdsfg", 1l);
+        Tweet tweet = new Tweet(new Date(), "Lol Cornelius is funny a f haha seriously !", 1l);
 
         ClassificationSet scores = new ClassificationSet();
 
@@ -103,16 +144,32 @@ public class ClassificationProcessor {
         result.add(new WordListLanguageClassifier("NO", "words.norwegian.txt"));
 //        result.add(new WordListLanguageClassifier("PL", "words.polish.txt"));
         result.add(new WordListLanguageClassifier("SV", "words.swedish.txt"));
-        result.add(new CharSetLanguageClassifier("JP", new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0x3040, 0x309F)}));
-        result.add(new CharSetLanguageClassifier("CN", new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0x4E00, 0x9FFF)}, new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0x3040, 0x309F)}));
-        result.add(new CharSetLanguageClassifier("TH", new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0x0E00, 0x0E7F)}));
-        result.add(new CharSetLanguageClassifier("AR", new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0x0600, 0x06FF)}));
-        result.add(new CharSetLanguageClassifier("KO", new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(0xAC00, 0xD7AF)}));
+        result.add(new CharSetLanguageClassifier("JP",
+                                                 new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(
+                                                         0x3040,
+                                                         0x309F)}));
+        result.add(new CharSetLanguageClassifier("CN",
+                                                 new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(
+                                                         0x4E00,
+                                                         0x9FFF)},
+                                                 new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(
+                                                         0x3040,
+                                                         0x309F)}));
+        result.add(new CharSetLanguageClassifier("TH",
+                                                 new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(
+                                                         0x0E00,
+                                                         0x0E7F)}));
+        result.add(new CharSetLanguageClassifier("AR",
+                                                 new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(
+                                                         0x0600,
+                                                         0x06FF)}));
+        result.add(new CharSetLanguageClassifier("KO",
+                                                 new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(
+                                                         0xAC00,
+                                                         0xD7AF)}));
         result.add(new WordListLanguageClassifier("PT", "portugueseU.dic"));
         result.add(new WordListLanguageClassifier("ID", "00-indonesian-wordlist.lst"));
 //        result.add(new WordListLanguageClassifier("BR", "br.dic"));
-
-
         return result;
     }
 

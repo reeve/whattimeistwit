@@ -66,16 +66,24 @@ public class ClassificationProcessor {
             int periodSecs = DEFAULT_PERIOD_SIZE;
             if (commandLine.hasOption(CliOptions.OPT_PERIOD_SIZE)) {
                 periodSecs = ((Number) commandLine.getParsedOptionValue(CliOptions.OPT_PERIOD_SIZE)).intValue();
+                throw new ParseException("Period size is not currently supported");
             }
 
-            processor.naiveRun(new SimpleFileTweetSource("D:\\Data\\Adam\\Temp\\out-2.txt"),
-                               processor.getClassifiers());
+//            processor.naiveRun(new MultiFileTweetSource(filenames), processor.getClassifiers());
+
+            List<LanguageClassifier> classifiers = processor.getClassifiers();
+            for (String filename : filenames) {
+                try {
+                    PeriodSummary ps = processor.simpleClassify(new SimpleFileTweetSource(filename), classifiers);
+                    logger.info(ps.toString());
+                } catch (IOException e) {
+                    logger.error("Error reading file: " + filename, e);
+                }
+            }
 
         } catch (ParseException e) {
             logger.error("Error in command line", e);
             opts.printHelpText();
-        } catch (IOException e) {
-            logger.error("Error running analysis", e);
         }
 
     }
@@ -94,6 +102,24 @@ public class ClassificationProcessor {
         logger.info(scores.toString());
         logger.info("Best match is: " + scores.getBestMatch());
     }
+
+    private PeriodSummary simpleClassify(TweetSource source, List<LanguageClassifier> classifiers) {
+        PeriodSummary ps = new PeriodSummary();
+
+        for (Tweet tweet : source) {
+            ClassificationSet tc = new ClassificationSet();
+            for (LanguageClassifier classifier : classifiers) {
+                tc.setCertainty(classifier.getLanguage(), classifier.classify(tweet));
+            }
+
+            logger.debug(String.format("%s : %s", tc.getBestMatch().toSimpleString(), tweet.getText()));
+
+            ps.add(tweet.getCreated(), tc.getBestMatch().getLanguage());
+        }
+
+        return ps;
+    }
+
 
     private void naiveRun(TweetSource source, List<LanguageClassifier> classifiers) {
         List<PeriodSummary> periods = new ArrayList<>();

@@ -41,7 +41,7 @@ public class CliOptions {
                                     .withArgName("dir")
                                     .withDescription("parse all files in specified directory")
                                     .withLongOpt(OPT_DIRNAME)
-                                    .create("a"));
+                                    .create("d"));
 
         nameGroup.addOption(OptionBuilder.hasArg()
                                     .withType(String.class)

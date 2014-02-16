@@ -1,6 +1,6 @@
 package com.adamreeve.whattimeistwit.twitter.download;
 
-import com.adamreeve.whattimeistwit.twitter.tweet.Tweet;
+import com.adamreeve.whattimeistwit.tweet.Tweet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import twitter4j.Status;

@@ -1,7 +1,7 @@
 package com.adamreeve.whattimeistwit.analysis;
 
 import com.adamreeve.whattimeistwit.analysis.classifiers.LanguageClassifier;
-import com.adamreeve.whattimeistwit.twitter.tweet.Tweet;
+import com.adamreeve.whattimeistwit.tweet.Tweet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

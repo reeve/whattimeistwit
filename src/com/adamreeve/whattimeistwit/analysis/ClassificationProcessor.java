@@ -3,9 +3,9 @@ package com.adamreeve.whattimeistwit.analysis;
 import com.adamreeve.whattimeistwit.analysis.classifiers.CharSetLanguageClassifier;
 import com.adamreeve.whattimeistwit.analysis.classifiers.LanguageClassifier;
 import com.adamreeve.whattimeistwit.analysis.classifiers.WordListLanguageClassifier;
-import com.adamreeve.whattimeistwit.twitter.tweet.MultiFileTweetSource;
-import com.adamreeve.whattimeistwit.twitter.tweet.Tweet;
-import com.adamreeve.whattimeistwit.twitter.tweet.TweetSource;
+import com.adamreeve.whattimeistwit.tweet.MultiFileTweetSource;
+import com.adamreeve.whattimeistwit.tweet.Tweet;
+import com.adamreeve.whattimeistwit.tweet.TweetSource;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.ParseException;
 import org.slf4j.Logger;
@@ -16,6 +16,7 @@ import java.io.FileFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -68,8 +69,10 @@ public class ClassificationProcessor {
                 threadCount = Integer.parseInt(commandLine.getOptionValue(CliOptions.OPT_THREADS));
             }
 
+            String dictBasePath = commandLine.getOptionValue(CliOptions.OPT_DICTBASE);
+
             processor.batchedRun(new MultiFileTweetSource(filenames),
-                                 getClassifiers("D:\\Data\\Adam\\Temp\\dicts"),
+                                 getClassifiers(dictBasePath),
                                  threadCount);
 
         } catch (ParseException e) {
@@ -136,9 +139,13 @@ public class ClassificationProcessor {
             }
         }
 
-        for (PeriodSummary period : periods.values()) {
-            LOGGER.info(period.toString());
+        List<Date> startDates = new ArrayList<>(periods.keySet());
+        Collections.sort(startDates);
+
+        for (Date startDate : startDates) {
+            LOGGER.info(periods.get(startDate).toString());
         }
+
     }
 
     private static List<LanguageClassifier> getClassifiers(String basePath) {
@@ -148,16 +155,13 @@ public class ClassificationProcessor {
         result.add(new WordListLanguageClassifier("FR", "liste_mots.txt", basePath));
         result.add(new WordListLanguageClassifier("ES", "es.dic", basePath));
         result.add(new WordListLanguageClassifier("DE", "de_neu.dic", basePath));
-//        result.add(new WordListLanguageClassifier("ES", "es_30K.txt"));
         result.add(new WordListLanguageClassifier("AF", "words.afrikaans.txt", basePath));
         result.add(new WordListLanguageClassifier("CS", "words.czech.txt", basePath));
         result.add(new WordListLanguageClassifier("DA", "words.danish.txt", basePath));
-//        result.add(new WordListLanguageClassifier("FI", "words.finnish.txt"));
         result.add(new WordListLanguageClassifier("HR", "words.croatian.txt", basePath));
         result.add(new WordListLanguageClassifier("IT", "words.italian.txt", basePath));
         result.add(new WordListLanguageClassifier("NL", "words.dutch.txt", basePath));
         result.add(new WordListLanguageClassifier("NO", "words.norwegian.txt", basePath));
-//        result.add(new WordListLanguageClassifier("PL", "words.polish.txt"));
         result.add(new WordListLanguageClassifier("SV", "words.swedish.txt", basePath));
         result.add(new CharSetLanguageClassifier("JP",
                                                  new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(
@@ -184,7 +188,6 @@ public class ClassificationProcessor {
                                                          0xD7AF)}));
         result.add(new WordListLanguageClassifier("PT", "portugueseU.dic", basePath));
         result.add(new WordListLanguageClassifier("ID", "00-indonesian-wordlist.lst", basePath));
-//        result.add(new WordListLanguageClassifier("BR", "br.dic"));
         return result;
     }
 }

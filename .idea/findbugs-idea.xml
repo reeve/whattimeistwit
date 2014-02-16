@@ -1,65 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
-  <component name="FacetManager">
-    <facet type="IvyIDEA" name="IvyIDEA">
-      <configuration ivyFile="D:\Data\Adam\My Documents\java\whattimeistwit\config\ivy.xml" useProjectSettings="true" useCustomIvySettings="true" ivySettingsFile="" onlyResolveSelectedConfigs="false">
-        <propertiesSettings>
-          <propertiesFiles includeProjectLevelPropertiesFiles="true" />
-        </propertiesSettings>
-      </configuration>
-    </facet>
-  </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
-    <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/config" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
-    </content>
-    <orderEntry type="inheritedJdk" />
-    <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="IvyIDEA">
-        <CLASSES>
-          <root url="jar://$IVY_DIR$/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.6.6.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/org.slf4j/slf4j-jdk14/jars/slf4j-jdk14-1.6.6.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-2.2.6.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/commons-logging/commons-logging-api/jars/commons-logging-api-1.1.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/log4j/log4j/bundles/log4j-1.2.17.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/org.apache.openejb/javaee-api/jars/javaee-api-5.0-2.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-async/jars/twitter4j-async-2.2.6.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-stream/jars/twitter4j-stream-2.2.6.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/commons-cli/commons-cli/jars/commons-cli-1.2.jar!/" />
-        </CLASSES>
-        <JAVADOC>
-          <root url="jar://$IVY_DIR$/cache/org.slf4j/slf4j-api/javadocs/slf4j-api-1.6.6-javadoc.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/org.slf4j/slf4j-jdk14/javadocs/slf4j-jdk14-1.6.6-javadoc.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-core/javadocs/twitter4j-core-2.2.6-javadoc.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-async/javadocs/twitter4j-async-2.2.6-javadoc.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-stream/javadocs/twitter4j-stream-2.2.6-javadoc.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/commons-cli/commons-cli/javadocs/commons-cli-1.2-javadoc.jar!/" />
-        </JAVADOC>
-        <SOURCES>
-          <root url="jar://$IVY_DIR$/cache/org.slf4j/slf4j-api/sources/slf4j-api-1.6.6-sources.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/org.slf4j/slf4j-jdk14/sources/slf4j-jdk14-1.6.6-sources.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-core/sources/twitter4j-core-2.2.6-sources.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-async/sources/twitter4j-async-2.2.6-sources.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/org.twitter4j/twitter4j-stream/sources/twitter4j-stream-2.2.6-sources.jar!/" />
-          <root url="jar://$IVY_DIR$/cache/commons-cli/commons-cli/sources/commons-cli-1.2-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-  </component>
+<project version="4">
   <component name="org.twodividedbyzero.idea.findbugs">
+    <option name="annotationTypeSettings">
+      <map>
+        <entry key="ExpPriority" value="-16777216;-1;-8355712;WAVE_UNDERSCORE;0;" />
+        <entry key="HighPriority" value="-65536;-1;-65536;WAVE_UNDERSCORE;1;" />
+        <entry key="IgnorePriority" value="-16777216;-1;-8650628;WAVE_UNDERSCORE;0;" />
+        <entry key="LowPriority" value="-16777216;-1;-16711936;BOXED;0;" />
+        <entry key="NormalPriority" value="-16777216;-1;-5066240;WAVE_UNDERSCORE;2;" />
+      </map>
+    </option>
     <option name="_basePreferences">
       <map>
         <entry key="property.analysisEffortLevel" value="default" />
@@ -250,6 +200,15 @@
         <entry key="STYLE" value="true" />
       </map>
     </option>
+    <option name="_annotationTypeSettings">
+      <map>
+        <entry key="ExpPriority" value="-16777216;-1;-8355712;WAVE_UNDERSCORE;0;" />
+        <entry key="HighPriority" value="-65536;-1;-65536;WAVE_UNDERSCORE;1;" />
+        <entry key="IgnorePriority" value="-16777216;-1;-8650628;WAVE_UNDERSCORE;0;" />
+        <entry key="LowPriority" value="-16777216;-1;-16711936;BOXED;0;" />
+        <entry key="NormalPriority" value="-16777216;-1;-5066240;WAVE_UNDERSCORE;2;" />
+      </map>
+    </option>
   </component>
-</module>
+</project>
 

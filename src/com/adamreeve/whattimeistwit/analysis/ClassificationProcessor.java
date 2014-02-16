@@ -3,7 +3,7 @@ package com.adamreeve.whattimeistwit.analysis;
 import com.adamreeve.whattimeistwit.analysis.classifiers.CharSetLanguageClassifier;
 import com.adamreeve.whattimeistwit.analysis.classifiers.LanguageClassifier;
 import com.adamreeve.whattimeistwit.analysis.classifiers.WordListLanguageClassifier;
-import com.adamreeve.whattimeistwit.twitter.tweet.SimpleFileTweetSource;
+import com.adamreeve.whattimeistwit.twitter.tweet.MultiFileTweetSource;
 import com.adamreeve.whattimeistwit.twitter.tweet.Tweet;
 import com.adamreeve.whattimeistwit.twitter.tweet.TweetSource;
 import org.apache.commons.cli.CommandLine;
@@ -15,18 +15,24 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * Date: 7/4/12 Time: 11:28 PM
  */
 public class ClassificationProcessor {
 
+    public static final int DEFAULT_PERIOD_SIZE_MINS = 1;
+    private static final int BATCH_EVERY = 1000;
     private static Logger logger = LoggerFactory.getLogger(ClassificationProcessor.class);
-    private static final int BATCH_EVERY = 10000;
-    public static final int DEFAULT_PERIOD_SIZE = 60 * 5;
-
     private static FileFilter fileFilter = new FileFilter() {
         public boolean accept(File file) {
             return file.isFile() && file.canRead();
@@ -63,23 +69,13 @@ public class ClassificationProcessor {
                 }
             }
 
-            int periodSecs = DEFAULT_PERIOD_SIZE;
+            int periodSecs = DEFAULT_PERIOD_SIZE_MINS * 60;
             if (commandLine.hasOption(CliOptions.OPT_PERIOD_SIZE)) {
                 periodSecs = ((Number) commandLine.getParsedOptionValue(CliOptions.OPT_PERIOD_SIZE)).intValue();
                 throw new ParseException("Period size is not currently supported");
             }
 
-//            processor.naiveRun(new MultiFileTweetSource(filenames), processor.getClassifiers());
-
-            List<LanguageClassifier> classifiers = processor.getClassifiers();
-            for (String filename : filenames) {
-                try {
-                    PeriodSummary ps = processor.simpleClassify(new SimpleFileTweetSource(filename), classifiers);
-                    logger.info(ps.toString());
-                } catch (IOException e) {
-                    logger.error("Error reading file: " + filename, e);
-                }
-            }
+            processor.batchedRun(new MultiFileTweetSource(filenames), processor.getClassifiers());
 
         } catch (ParseException e) {
             logger.error("Error in command line", e);
@@ -88,71 +84,60 @@ public class ClassificationProcessor {
 
     }
 
-    private void Test() {
-        Tweet tweet = new Tweet(new Date(), "Lol Cornelius is funny a f haha seriously !", 1l);
+    private void batchedRun(TweetSource source, List<LanguageClassifier> classifiers) {
 
-        ClassificationSet scores = new ClassificationSet();
-
-        for (LanguageClassifier lc : getClassifiers()) {
-            Float score = lc.classify(tweet);
-            logger.info(String.format("Tweet had a score of %f for language %s", score, lc.getLanguage()));
-            scores.setCertainty(lc.getLanguage(), score);
-        }
-
-        logger.info(scores.toString());
-        logger.info("Best match is: " + scores.getBestMatch());
-    }
-
-    private PeriodSummary simpleClassify(TweetSource source, List<LanguageClassifier> classifiers) {
-        PeriodSummary ps = new PeriodSummary();
-
-        for (Tweet tweet : source) {
-            ClassificationSet tc = new ClassificationSet();
-            for (LanguageClassifier classifier : classifiers) {
-                tc.setCertainty(classifier.getLanguage(), classifier.classify(tweet));
-            }
-
-            logger.debug(String.format("%s : %s", tc.getBestMatch().toSimpleString(), tweet.getText()));
-
-            ps.add(tweet.getCreated(), tc.getBestMatch().getLanguage());
-        }
-
-        return ps;
-    }
-
-
-    private void naiveRun(TweetSource source, List<LanguageClassifier> classifiers) {
-        List<PeriodSummary> periods = new ArrayList<>();
-
-        PeriodSummary ps = new PeriodSummary();
-        periods.add(ps);
-
+        ExecutorService executor = Executors.newFixedThreadPool(24);
         int count = 0;
+        List<Tweet> batch = new ArrayList<>();
+        Map<Date, PeriodSummary> periods = new HashMap<>();
+        List<Future<Collection<PeriodSummary>>> futures = new ArrayList<>();
+
         for (Tweet tweet : source) {
             count++;
-
-            ClassificationSet tc = new ClassificationSet();
-            for (LanguageClassifier classifier : classifiers) {
-                tc.setCertainty(classifier.getLanguage(), classifier.classify(tweet));
-            }
-
-            logger.debug(String.format("%s : %s", tc.getBestMatch().toSimpleString(), tweet.getText()));
-
-            ps.add(tweet.getCreated(), tc.getBestMatch().getLanguage());
+            batch.add(tweet);
 
             if (count % BATCH_EVERY == 0) {
-                logger.info("Starting new period");
-                ps = new PeriodSummary();
-                periods.add(ps);
+                logger.debug("Queueing batch");
+                futures.add(executor.submit(new BatchProcessor(batch, classifiers)));
+                logger.debug("Starting new batch");
+                batch = new ArrayList<>();
             }
         }
 
-        for (PeriodSummary period : periods) {
+        if (batch.size() > 0) {
+            logger.debug("Queueing final batch");
+            futures.add(executor.submit(new BatchProcessor(batch, classifiers)));
+        }
+
+        executor.shutdown();
+
+        for (Future<Collection<PeriodSummary>> future : futures) {
+            try {
+                Collection<PeriodSummary> summaries = future.get();
+
+                for (PeriodSummary summary : summaries) {
+                    PeriodSummary existing = periods.get(summary.getStart());
+
+                    if (existing != null) {
+                        existing.merge(summary);
+                    } else {
+                        periods.put(summary.getStart(), summary);
+                    }
+                }
+
+            } catch (InterruptedException e) {
+                logger.error("Interrupted executing batch", e);
+            } catch (ExecutionException e) {
+                logger.error("Error executing batch", e);
+            }
+        }
+
+        for (PeriodSummary period : periods.values()) {
             logger.info(period.toString());
         }
     }
 
-    private List<LanguageClassifier> getClassifiers() {
+    private static List<LanguageClassifier> getClassifiers() {
         List<LanguageClassifier> result = new ArrayList<>();
 
         result.add(new WordListLanguageClassifier("EN", "2of12inf.txt"));
@@ -198,5 +183,4 @@ public class ClassificationProcessor {
 //        result.add(new WordListLanguageClassifier("BR", "br.dic"));
         return result;
     }
-
 }

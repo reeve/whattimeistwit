@@ -16,26 +16,20 @@ import java.util.Set;
  */
 public class WordListLanguageClassifier implements LanguageClassifier {
 
-    private static Logger logger = LoggerFactory.getLogger(WordListLanguageClassifier.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(WordListLanguageClassifier.class);
 
     private String language;
     private Set<String> dictionary;
-    private static final String basePath = "D:\\Data\\Adam\\Temp\\dicts";
 
-    public WordListLanguageClassifier(String language, Set<String> dictionary) {
+    public WordListLanguageClassifier(String language, String dictName, String basePath) {
         this.language = language;
-        this.dictionary = dictionary;
+        this.dictionary = loadDictionary(dictName, basePath);
     }
 
-    public WordListLanguageClassifier(String language, String dictPath) {
-        this.language = language;
-        this.dictionary = loadDictionary(dictPath);
-    }
-
-    private Set<String> loadDictionary(String fileName) {
+    private Set<String> loadDictionary(String fileName, String basePath) {
         String dictPath = String.format("%s\\%s\\%s", basePath, language.toLowerCase(), fileName);
 
-        logger.info("Loading dictionary from " + dictPath);
+        LOGGER.info("Loading dictionary from " + dictPath);
 
         Set<String> result = new HashSet<>(1000);
         try {
@@ -49,10 +43,10 @@ public class WordListLanguageClassifier implements LanguageClassifier {
                 line = reader.readLine();
             }
         } catch (IOException e) {
-            logger.error("Error reading dict file : " + dictPath, e);
+            LOGGER.error("Error reading dict file : " + dictPath, e);
         }
 
-        logger.info(String.format("Loaded %d entries", result.size()));
+        LOGGER.info(String.format("Loaded %d entries", result.size()));
 
         return result;
     }
@@ -66,18 +60,21 @@ public class WordListLanguageClassifier implements LanguageClassifier {
         for (String word : words) {
             if (dictionary.contains(word)) {
                 matches++;
-                if (logger.isDebugEnabled()) {
-                    logger.debug(word + ":match");
+                if (LOGGER.isDebugEnabled()) {
+                    LOGGER.debug(word + ":match");
                 }
             } else {
-                if (logger.isDebugEnabled()) {
-                    logger.debug(word + ":fail");
+                if (LOGGER.isDebugEnabled()) {
+                    LOGGER.debug(word + ":fail");
                 }
             }
         }
 
-        if (logger.isDebugEnabled()) {
-            logger.debug(String.format("Classifier for %s matched %d out of %d words", getLanguage(), matches, words.size()));
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug(String.format("Classifier for %s matched %d out of %d words",
+                                       getLanguage(),
+                                       matches,
+                                       words.size()));
         }
 
         return (float) matches / words.size();

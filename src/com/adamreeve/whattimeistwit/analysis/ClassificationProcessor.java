@@ -30,19 +30,13 @@ import java.util.concurrent.Future;
  */
 public class ClassificationProcessor {
 
-    public static final int DEFAULT_PERIOD_SIZE_MINS = 1;
-    private static final int BATCH_EVERY = 1000;
-    private static Logger logger = LoggerFactory.getLogger(ClassificationProcessor.class);
-    private static FileFilter fileFilter = new FileFilter() {
-        public boolean accept(File file) {
-            return file.isFile() && file.canRead();
-        }
-    };
+    private static final int BATCH_EVERY = 2000;
+    private static Logger LOGGER = LoggerFactory.getLogger(ClassificationProcessor.class);
 
     public static void main(String[] args) {
         ClassificationProcessor processor = new ClassificationProcessor();
 
-        logger.info("Starting...");
+        LOGGER.info("Starting...");
 
         CliOptions opts = new CliOptions();
 
@@ -50,6 +44,7 @@ public class ClassificationProcessor {
             CommandLine commandLine = opts.parseCommandLine(args);
 
             List<String> filenames = new ArrayList<>();
+            int threadCount = 1;
 
             if (commandLine.hasOption(CliOptions.OPT_FILENAME)) {
                 filenames.add(commandLine.getOptionValue(CliOptions.OPT_FILENAME));
@@ -61,7 +56,7 @@ public class ClassificationProcessor {
                         try {
                             filenames.add(file.getCanonicalPath());
                         } catch (IOException e) {
-                            logger.error(String.format("Error processing file %s", file.getName()));
+                            LOGGER.error(String.format("Error processing file %s", file.getName()));
                         }
                     }
                 } else {
@@ -69,24 +64,33 @@ public class ClassificationProcessor {
                 }
             }
 
-            int periodSecs = DEFAULT_PERIOD_SIZE_MINS * 60;
-            if (commandLine.hasOption(CliOptions.OPT_PERIOD_SIZE)) {
-                periodSecs = ((Number) commandLine.getParsedOptionValue(CliOptions.OPT_PERIOD_SIZE)).intValue();
-                throw new ParseException("Period size is not currently supported");
+            if (commandLine.hasOption(CliOptions.OPT_THREADS)) {
+                threadCount = Integer.parseInt(commandLine.getOptionValue(CliOptions.OPT_THREADS));
             }
 
-            processor.batchedRun(new MultiFileTweetSource(filenames), processor.getClassifiers());
+            processor.batchedRun(new MultiFileTweetSource(filenames),
+                                 getClassifiers("D:\\Data\\Adam\\Temp\\dicts"),
+                                 threadCount);
 
         } catch (ParseException e) {
-            logger.error("Error in command line", e);
+            LOGGER.error("Error in command line", e);
             opts.printHelpText();
         }
 
+        LOGGER.info("Done.");
     }
 
-    private void batchedRun(TweetSource source, List<LanguageClassifier> classifiers) {
+    private static FileFilter fileFilter = new FileFilter() {
+        public boolean accept(File file) {
+            return file.isFile() && file.canRead();
+        }
+    };
 
-        ExecutorService executor = Executors.newFixedThreadPool(24);
+    private void batchedRun(TweetSource source, List<LanguageClassifier> classifiers, int threadCount) {
+
+        LOGGER.info("Starting batched run with {} threads", threadCount);
+
+        ExecutorService executor = Executors.newFixedThreadPool(threadCount);
         int count = 0;
         List<Tweet> batch = new ArrayList<>();
         Map<Date, PeriodSummary> periods = new HashMap<>();
@@ -97,15 +101,15 @@ public class ClassificationProcessor {
             batch.add(tweet);
 
             if (count % BATCH_EVERY == 0) {
-                logger.debug("Queueing batch");
+                LOGGER.debug("Queueing batch");
                 futures.add(executor.submit(new BatchProcessor(batch, classifiers)));
-                logger.debug("Starting new batch");
+                LOGGER.debug("Starting new batch");
                 batch = new ArrayList<>();
             }
         }
 
         if (batch.size() > 0) {
-            logger.debug("Queueing final batch");
+            LOGGER.debug("Queueing final batch");
             futures.add(executor.submit(new BatchProcessor(batch, classifiers)));
         }
 
@@ -126,35 +130,35 @@ public class ClassificationProcessor {
                 }
 
             } catch (InterruptedException e) {
-                logger.error("Interrupted executing batch", e);
+                LOGGER.error("Interrupted executing batch", e);
             } catch (ExecutionException e) {
-                logger.error("Error executing batch", e);
+                LOGGER.error("Error executing batch", e);
             }
         }
 
         for (PeriodSummary period : periods.values()) {
-            logger.info(period.toString());
+            LOGGER.info(period.toString());
         }
     }
 
-    private static List<LanguageClassifier> getClassifiers() {
+    private static List<LanguageClassifier> getClassifiers(String basePath) {
         List<LanguageClassifier> result = new ArrayList<>();
 
-        result.add(new WordListLanguageClassifier("EN", "2of12inf.txt"));
-        result.add(new WordListLanguageClassifier("FR", "liste_mots.txt"));
-        result.add(new WordListLanguageClassifier("ES", "es.dic"));
-        result.add(new WordListLanguageClassifier("DE", "de_neu.dic"));
+        result.add(new WordListLanguageClassifier("EN", "2of12inf.txt", basePath));
+        result.add(new WordListLanguageClassifier("FR", "liste_mots.txt", basePath));
+        result.add(new WordListLanguageClassifier("ES", "es.dic", basePath));
+        result.add(new WordListLanguageClassifier("DE", "de_neu.dic", basePath));
 //        result.add(new WordListLanguageClassifier("ES", "es_30K.txt"));
-        result.add(new WordListLanguageClassifier("AF", "words.afrikaans.txt"));
-        result.add(new WordListLanguageClassifier("CS", "words.czech.txt"));
-        result.add(new WordListLanguageClassifier("DA", "words.danish.txt"));
+        result.add(new WordListLanguageClassifier("AF", "words.afrikaans.txt", basePath));
+        result.add(new WordListLanguageClassifier("CS", "words.czech.txt", basePath));
+        result.add(new WordListLanguageClassifier("DA", "words.danish.txt", basePath));
 //        result.add(new WordListLanguageClassifier("FI", "words.finnish.txt"));
-        result.add(new WordListLanguageClassifier("HR", "words.croatian.txt"));
-        result.add(new WordListLanguageClassifier("IT", "words.italian.txt"));
-        result.add(new WordListLanguageClassifier("NL", "words.dutch.txt"));
-        result.add(new WordListLanguageClassifier("NO", "words.norwegian.txt"));
+        result.add(new WordListLanguageClassifier("HR", "words.croatian.txt", basePath));
+        result.add(new WordListLanguageClassifier("IT", "words.italian.txt", basePath));
+        result.add(new WordListLanguageClassifier("NL", "words.dutch.txt", basePath));
+        result.add(new WordListLanguageClassifier("NO", "words.norwegian.txt", basePath));
 //        result.add(new WordListLanguageClassifier("PL", "words.polish.txt"));
-        result.add(new WordListLanguageClassifier("SV", "words.swedish.txt"));
+        result.add(new WordListLanguageClassifier("SV", "words.swedish.txt", basePath));
         result.add(new CharSetLanguageClassifier("JP",
                                                  new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(
                                                          0x3040,
@@ -178,8 +182,8 @@ public class ClassificationProcessor {
                                                  new CharSetLanguageClassifier.Range[]{new CharSetLanguageClassifier.Range(
                                                          0xAC00,
                                                          0xD7AF)}));
-        result.add(new WordListLanguageClassifier("PT", "portugueseU.dic"));
-        result.add(new WordListLanguageClassifier("ID", "00-indonesian-wordlist.lst"));
+        result.add(new WordListLanguageClassifier("PT", "portugueseU.dic", basePath));
+        result.add(new WordListLanguageClassifier("ID", "00-indonesian-wordlist.lst", basePath));
 //        result.add(new WordListLanguageClassifier("BR", "br.dic"));
         return result;
     }

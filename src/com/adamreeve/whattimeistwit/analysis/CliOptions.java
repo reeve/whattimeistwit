@@ -9,19 +9,17 @@ import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.OptionGroup;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Date: 9/14/12 Time: 7:11 PM
  */
 public class CliOptions {
 
-    private static Logger logger = LoggerFactory.getLogger(CliOptions.class);
     public static final String OPT_HELP = "help";
     public static final String OPT_DIRNAME = "dirname";
     public static final String OPT_FILENAME = "filename";
-    public static final String OPT_PERIOD_SIZE = "periodsize";
+    public static final String OPT_THREADS = "threads";
+    public static final String OPT_DICTBASE = "dicts";
 
     private Options options;
 
@@ -52,26 +50,31 @@ public class CliOptions {
         options.addOptionGroup(nameGroup);
 
         options.addOption(OptionBuilder.hasArg()
-                                  .withType(Number.class)
-                                  .withArgName("secs")
-                                  .withDescription("make periods this size")
-                                  .withLongOpt(OPT_PERIOD_SIZE)
-                                  .create("p"));
+                                  .withType(String.class)
+                                  .withArgName("count")
+                                  .withDescription("use this many threads (default = 1)")
+                                  .withLongOpt(OPT_THREADS)
+                                  .create("t"));
+
+
+        options.addOption(OptionBuilder.hasArg()
+                                  .withType(String.class)
+                                  .withArgName("dir")
+                                  .withDescription("load dictionaries from this directory")
+                                  .withLongOpt(OPT_DICTBASE)
+                                  .isRequired()
+                                  .create("b"));
 
         return options;
     }
 
     protected CommandLine parseCommandLine(String[] args) throws ParseException {
         CommandLineParser parser = new GnuParser();
-        CommandLine result = null;
-
-        result = parser.parse(options, args);
-
-        return result;
+        return parser.parse(options, args);
     }
 
     public void printHelpText() {
         HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp("ClassificationProcessor", options, true);
+        formatter.printHelp(100, "ClassificationProcessor", "", options, "", true);
     }
 }

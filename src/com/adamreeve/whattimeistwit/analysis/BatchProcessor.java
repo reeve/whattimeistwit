@@ -22,10 +22,12 @@ class BatchProcessor implements Callable<Collection<PeriodSummary>> {
 
     private final List<Tweet> batch;
     private final List<LanguageClassifier> classifiers;
+    private final Calendar cal;
 
     public BatchProcessor(List<Tweet> batch, List<LanguageClassifier> classifiers) {
         this.batch = batch;
         this.classifiers = classifiers;
+        cal = GregorianCalendar.getInstance();
     }
 
     @Override
@@ -56,7 +58,6 @@ class BatchProcessor implements Callable<Collection<PeriodSummary>> {
     }
 
     private PeriodSummary getPeriod(Date datestamp, Map<Date, PeriodSummary> periods) {
-        Calendar cal = GregorianCalendar.getInstance();
         cal.setTime(datestamp);
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
@@ -65,7 +66,7 @@ class BatchProcessor implements Callable<Collection<PeriodSummary>> {
         PeriodSummary periodSummary = periods.get(pStart);
 
         if (periodSummary == null) {
-            cal.add(Calendar.SECOND, 1);
+            cal.add(Calendar.MINUTE, 1);
             cal.add(Calendar.MILLISECOND, -1);
             Date pEnd = cal.getTime();
             periodSummary = new PeriodSummary(pStart, pEnd);

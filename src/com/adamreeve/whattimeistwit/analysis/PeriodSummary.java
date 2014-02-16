@@ -56,11 +56,11 @@ public class PeriodSummary {
     }
 
     public String toString() {
-        DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
+        DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM);
         StringBuilder sb = new StringBuilder("Summary (").append(df.format(start))
                 .append("-")
                 .append(df.format(end))
-                .append(")");
+                .append(") ");
         for (String lang : countMap.keySet()) {
             String entry = String.format("%s=%2.1f%%", lang, countMap.get(lang) / total * 100);
             sb.append(entry).append(",");

@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
  */
 public class MultiFileTweetSource implements TweetSource {
 
-    private static Logger logger = LoggerFactory.getLogger(MultiFileTweetSource.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(MultiFileTweetSource.class);
 
     private Iterator<String> pathIter;
     private SimpleFileTweetSource current;
@@ -31,7 +31,7 @@ public class MultiFileTweetSource implements TweetSource {
             try {
                 current = new SimpleFileTweetSource(path);
             } catch (IOException e) {
-                logger.error("Error reading file " + path, e);
+                LOGGER.error("Error reading file " + path, e);
                 continue;
             }
 

@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
  * Time: 9:01 PM
  */
 public class Tweet {
-    static Logger logger = LoggerFactory.getLogger(Tweet.class);
+    static Logger LOGGER = LoggerFactory.getLogger(Tweet.class);
 
     private static final String FORMAT = "{0,date,yyyyMMdd HH:mm:ss}|{1,number,###}|{2}";
     private static final MessageFormat formatter = new MessageFormat(FORMAT);
@@ -41,7 +41,7 @@ public class Tweet {
             this.text = (String) args[2];
             this.id = (Long) args[1];
         } catch (ParseException e) {
-            logger.error("Error parsing record : " + fileStr, e);
+            LOGGER.error("Error parsing record : " + fileStr, e);
         }
     }
 

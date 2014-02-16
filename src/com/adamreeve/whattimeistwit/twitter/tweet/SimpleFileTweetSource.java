@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class SimpleFileTweetSource implements TweetSource {
 
-    private static Logger logger = LoggerFactory.getLogger(SimpleFileTweetSource.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(SimpleFileTweetSource.class);
 
     private List<Tweet> tweets = new ArrayList<>(100);
 
@@ -27,7 +27,7 @@ public class SimpleFileTweetSource implements TweetSource {
             throw new IOException(String.format("Can't open input file for reading: %s", path));
         }
 
-        logger.info("Opening file at " + file.getCanonicalPath());
+        LOGGER.info("Opening file at " + file.getCanonicalPath());
 
         BufferedReader reader = new BufferedReader(new FileReader(file));
 
@@ -37,7 +37,7 @@ public class SimpleFileTweetSource implements TweetSource {
             line = reader.readLine();
         }
 
-        logger.info(String.format("Read %d tweets", tweets.size()));
+        LOGGER.info(String.format("Read %d tweets", tweets.size()));
     }
 
     @Override

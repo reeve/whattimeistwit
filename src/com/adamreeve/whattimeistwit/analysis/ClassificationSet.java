@@ -6,7 +6,6 @@ import java.util.Map;
 /**
  * A collection of all the classifications for a given tweet
  * <p/>
- * Date: 7/4/12 Time: 10:45 PM
  */
 public class ClassificationSet {
 

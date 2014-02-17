@@ -5,7 +5,7 @@ import com.adamreeve.whattimeistwit.tweet.Tweet;
 /**
  * Responsible for calculating the likelihood of a given tweet being in a specific language.
  * <p/>
- * Date: 7/4/12 Time: 10:44 PM
+ *
  */
 public interface LanguageClassifier {
 

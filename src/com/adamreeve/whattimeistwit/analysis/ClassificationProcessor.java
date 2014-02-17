@@ -29,7 +29,6 @@ import java.util.concurrent.Future;
 /**
  * Main class for processing a set of tweets and generating language splits for each 1 minute period.
  * <p/>
- * Date: 7/4/12 Time: 11:28 PM
  */
 public class ClassificationProcessor {
 

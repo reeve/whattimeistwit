@@ -14,7 +14,7 @@ import java.util.Set;
  * Classifies tweets based on matches in language specific dictionaries. The final score is calculated as the percentage
  * of words in the tweet which were matched.
  * <p/>
- * Date: 7/4/12 Time: 11:06 PM
+ *
  */
 public class WordListLanguageClassifier implements LanguageClassifier {
 

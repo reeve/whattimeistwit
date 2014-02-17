@@ -5,7 +5,7 @@ import com.adamreeve.whattimeistwit.tweet.Tweet;
 /**
  * Tests for a language by looking for characters in a language specific character set (e.g. Japanese).
  * <p/>
- * Date: 7/7/12 Time: 10:57 PM
+ *
  */
 public class CharSetLanguageClassifier implements LanguageClassifier {
 

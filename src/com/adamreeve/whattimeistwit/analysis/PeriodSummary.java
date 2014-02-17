@@ -10,7 +10,6 @@ import java.util.TreeMap;
 /**
  * Represents the aggregate percentages of tweets identified into each language over a time span.
  * <p/>
- * Date: 7/7/12 Time: 10:12 PM
  */
 public class PeriodSummary {
 

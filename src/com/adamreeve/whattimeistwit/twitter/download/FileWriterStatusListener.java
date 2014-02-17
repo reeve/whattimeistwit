@@ -12,7 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Date: 7/4/12 Time: 6:48 PM
+ *
  */
 public class FileWriterStatusListener implements CloseableStatusListener {
     static Logger logger = LoggerFactory.getLogger(FileWriterStatusListener.class);

@@ -17,7 +17,7 @@ import java.util.concurrent.Callable;
 /**
  * Processes a single batch of tweets and returns appropriate period summaries.
  * <p/>
- * Author: Adam Reeve Date: 2/16/14 Time: 3:44 PM
+ * Author: Adam Reeve
  */
 class BatchProcessor implements Callable<Collection<PeriodSummary>> {
     private static final Logger LOGGER = LoggerFactory.getLogger(BatchProcessor.class);

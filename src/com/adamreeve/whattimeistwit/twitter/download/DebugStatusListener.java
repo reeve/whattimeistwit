@@ -6,7 +6,7 @@ import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
 
 /**
- * Date: 7/4/12 Time: 6:30 PM
+ *
  */
 class DebugStatusListener implements CloseableStatusListener {
     static Logger logger = LoggerFactory.getLogger(DebugStatusListener.class);

@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Date: 7/2/12 Time: 9:30 PM
+ *
  */
 public class TwitterStreamClient {
 

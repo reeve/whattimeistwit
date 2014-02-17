@@ -3,7 +3,6 @@ package com.adamreeve.whattimeistwit.analysis;
 /**
  * Represents a single score for a tweet/language pair
  * <p/>
- * Date: 7/7/12 Time: 7:15 PM
  */
 public class Classification {
     private String language;

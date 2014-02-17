@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 /**
  * Loads tweets from a series of files in no specific order, making use of the SimpleFileTweetSource.
  * <p/>
- * Date: 9/24/12 Time: 10:26 PM
+ *
  */
 public class MultiFileTweetSource implements TweetSource {
 

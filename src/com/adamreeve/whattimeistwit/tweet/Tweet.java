@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 /**
  * Represents a single tweet record, with methods to read and write from a string form.
  * <p/>
- * Date: 7/4/12 Time: 9:01 PM
+ *
  */
 public class Tweet {
     static Logger LOGGER = LoggerFactory.getLogger(Tweet.class);

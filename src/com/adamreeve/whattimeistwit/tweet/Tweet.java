@@ -14,6 +14,8 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
+ * Represents a single tweet record, with methods to read and write from a string form.
+ * <p/>
  * Date: 7/4/12 Time: 9:01 PM
  */
 public class Tweet {
@@ -33,6 +35,11 @@ public class Tweet {
 
     public static final HashSet<String> EMPTY_RESULT = new HashSet<>();
 
+    /**
+     * Parse a string into a tweet record
+     *
+     * @param fileStr the properly formatted string
+     */
     public Tweet(String fileStr) {
         try {
             Object[] args = formatter.parse(fileStr);
@@ -44,6 +51,13 @@ public class Tweet {
         }
     }
 
+    /**
+     * Create an instance directly from fields
+     *
+     * @param created date stamp
+     * @param text    tweet text
+     * @param id      tweet uid
+     */
     public Tweet(Date created, String text, Long id) {
         this.created = created;
         this.text = text;
@@ -62,6 +76,11 @@ public class Tweet {
         return id;
     }
 
+    /**
+     * Returns all the words in the tweet in lower case
+     *
+     * @return a set of unique strings
+     */
     public Set<String> getWordsInLowerCase() {
         if (text == null) {
             return EMPTY_RESULT;
@@ -79,6 +98,11 @@ public class Tweet {
         return new HashSet<>(Arrays.asList(splitResult));
     }
 
+    /**
+     * As getWordsInLowerCase(), but with various non-language strings removed (e.g. URLs, "RT" etc)
+     *
+     * @return a set of unique strings
+     */
     public Set<String> getRealWordsInLowerCase() {
         List<String> remove = new ArrayList<>();
         Set<String> words = getWordsInLowerCase();
@@ -96,6 +120,11 @@ public class Tweet {
         return s.length() < MIN_WORD_LENGTH || badPattern.matcher(s).matches();
     }
 
+    /**
+     * formats this tweet into a string
+     *
+     * @return a formatted string representation of this tweet
+     */
     public String toFileStr() {
         String cleanText = lineBreakPattern.matcher(text).replaceAll("");
         Object[] args = new Object[]{created, id, cleanText};

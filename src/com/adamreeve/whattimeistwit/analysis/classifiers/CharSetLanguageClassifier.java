@@ -3,8 +3,9 @@ package com.adamreeve.whattimeistwit.analysis.classifiers;
 import com.adamreeve.whattimeistwit.tweet.Tweet;
 
 /**
- * Date: 7/7/12
- * Time: 10:57 PM
+ * Tests for a language by looking for characters in a language specific character set (e.g. Japanese).
+ * <p/>
+ * Date: 7/7/12 Time: 10:57 PM
  */
 public class CharSetLanguageClassifier implements LanguageClassifier {
 
@@ -12,10 +13,24 @@ public class CharSetLanguageClassifier implements LanguageClassifier {
     private Range[] ranges;
     private Range[] negRanges;
 
+    /**
+     * Specify the language and a set of ranges which make up the character set for this language.
+     *
+     * @param language an ISO language code
+     * @param ranges   a set of ranges within the the unicode space
+     */
     public CharSetLanguageClassifier(String language, Range[] ranges) {
         this(language, ranges, new Range[0]);
     }
 
+    /**
+     * Specify the language and a set of ranges which make up the character set for this language. Also specify a set of
+     * character ranges which prove that the tweet is NOT in this language.
+     *
+     * @param language  an ISO language code
+     * @param ranges    a set of ranges within the the unicode space
+     * @param negRanges a set of ranges within the the unicode space - any matches in this space will cause a 0% match
+     */
     public CharSetLanguageClassifier(String language, Range[] ranges, Range[] negRanges) {
         this.language = language;
         this.ranges = ranges;

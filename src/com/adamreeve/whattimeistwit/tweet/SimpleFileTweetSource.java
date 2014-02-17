@@ -12,6 +12,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * Loads tweets from a single file
+ * <p/>
  * Date: 7/7/12 Time: 3:41 PM
  */
 public class SimpleFileTweetSource implements TweetSource {

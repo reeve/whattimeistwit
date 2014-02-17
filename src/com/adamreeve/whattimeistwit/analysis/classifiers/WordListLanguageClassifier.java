@@ -11,8 +11,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Date: 7/4/12
- * Time: 11:06 PM
+ * Classifies tweets based on matches in language specific dictionaries. The final score is calculated as the percentage
+ * of words in the tweet which were matched.
+ * <p/>
+ * Date: 7/4/12 Time: 11:06 PM
  */
 public class WordListLanguageClassifier implements LanguageClassifier {
 
@@ -21,6 +23,13 @@ public class WordListLanguageClassifier implements LanguageClassifier {
     private String language;
     private Set<String> dictionary;
 
+    /**
+     * Construct an instance for a specified language using a specified dictionary
+     *
+     * @param language the ISO language code
+     * @param dictName the name of the dictionary file
+     * @param basePath the base path of the dictionary codes
+     */
     public WordListLanguageClassifier(String language, String dictName, String basePath) {
         this.language = language;
         this.dictionary = loadDictionary(dictName, basePath);
@@ -85,7 +94,7 @@ public class WordListLanguageClassifier implements LanguageClassifier {
         return language;
     }
 
-    protected Set<String> getDictionary() {
+    private Set<String> getDictionary() {
         return dictionary;
     }
 

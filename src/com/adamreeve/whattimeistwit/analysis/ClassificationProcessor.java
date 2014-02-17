@@ -27,11 +27,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 /**
+ * Main class for processing a set of tweets and generating language splits for each 1 minute period.
+ * <p/>
  * Date: 7/4/12 Time: 11:28 PM
  */
 public class ClassificationProcessor {
 
-    private static final int BATCH_EVERY = 2000;
+    private static final int BATCH_SIZE = 2000;
     private static Logger LOGGER = LoggerFactory.getLogger(ClassificationProcessor.class);
 
     public static void main(String[] args) {
@@ -42,6 +44,7 @@ public class ClassificationProcessor {
         CliOptions opts = new CliOptions();
 
         try {
+            // figure out the options
             CommandLine commandLine = opts.parseCommandLine(args);
 
             List<String> filenames = new ArrayList<>();
@@ -71,6 +74,7 @@ public class ClassificationProcessor {
 
             String dictBasePath = commandLine.getOptionValue(CliOptions.OPT_DICTBASE);
 
+            // start processing
             processor.batchedRun(new MultiFileTweetSource(filenames),
                                  getClassifiers(dictBasePath),
                                  threadCount);
@@ -83,27 +87,48 @@ public class ClassificationProcessor {
         LOGGER.info("Done.");
     }
 
+    // filters a set of files into those we can actually read
     private static FileFilter fileFilter = new FileFilter() {
         public boolean accept(File file) {
             return file.isFile() && file.canRead();
         }
     };
 
+    /**
+     * Do the work - split the incoming data into batches and run through the classifiers
+     *
+     * @param source      data source for the tweets
+     * @param classifiers the classifiers to use
+     * @param threadCount max thread count for scheduling
+     */
     private void batchedRun(TweetSource source, List<LanguageClassifier> classifiers, int threadCount) {
 
         LOGGER.info("Starting batched run with {} threads", threadCount);
 
+        // executor
         ExecutorService executor = Executors.newFixedThreadPool(threadCount);
+
+        // count of incoming tweets
         int count = 0;
-        List<Tweet> batch = new ArrayList<>();
+
+        // map of start date -> period summaries
         Map<Date, PeriodSummary> periods = new HashMap<>();
+
+        // list of futures from the scheduled tasks
         List<Future<Collection<PeriodSummary>>> futures = new ArrayList<>();
 
+        // holder for the current batch
+        List<Tweet> batch = new ArrayList<>();
+
+        // iterate over all the tweets
         for (Tweet tweet : source) {
+            // count and add to the current batch
             count++;
             batch.add(tweet);
 
-            if (count % BATCH_EVERY == 0) {
+            if (count % BATCH_SIZE == 0) {
+                // schedule for execution and start a new one
+
                 LOGGER.debug("Queueing batch");
                 futures.add(executor.submit(new BatchProcessor(batch, classifiers)));
                 LOGGER.debug("Starting new batch");
@@ -112,12 +137,15 @@ public class ClassificationProcessor {
         }
 
         if (batch.size() > 0) {
+            // clean up the last few tweets
             LOGGER.debug("Queueing final batch");
             futures.add(executor.submit(new BatchProcessor(batch, classifiers)));
         }
 
+        // wait for execution to end
         executor.shutdown();
 
+        // collect all the results and merge equivalent periods together
         for (Future<Collection<PeriodSummary>> future : futures) {
             try {
                 Collection<PeriodSummary> summaries = future.get();
@@ -139,9 +167,11 @@ public class ClassificationProcessor {
             }
         }
 
+        // sort the output
         List<Date> startDates = new ArrayList<>(periods.keySet());
         Collections.sort(startDates);
 
+        // and print it out
         for (Date startDate : startDates) {
             LOGGER.info(periods.get(startDate).toString());
         }

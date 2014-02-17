@@ -8,6 +8,8 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 /**
+ * Represents the aggregate percentages of tweets identified into each language over a time span.
+ * <p/>
  * Date: 7/7/12 Time: 10:12 PM
  */
 public class PeriodSummary {
@@ -18,10 +20,19 @@ public class PeriodSummary {
     private boolean autoRange;
     private SortedMap<String, Long> countMap = new TreeMap<>();
 
+    /**
+     * Creates an instance which sets it's start and end automatically
+     */
     public PeriodSummary() {
         autoRange = true;
     }
 
+    /**
+     * Creates an instance with preset start and end
+     *
+     * @param start
+     * @param end
+     */
     public PeriodSummary(Date start, Date end) {
         this.start = start;
         this.end = end;
@@ -36,6 +47,12 @@ public class PeriodSummary {
         return end;
     }
 
+    /**
+     * Add a record for an individual tweet
+     *
+     * @param timeStamp the time stamp of the tweet
+     * @param language  the language
+     */
     public void add(Date timeStamp, String language) {
         total++;
         if (!countMap.containsKey(language)) {
@@ -45,6 +62,8 @@ public class PeriodSummary {
         }
 
         if (autoRange) {
+            // check whether we need to reset start or end
+
             if (timeStamp.before(start)) {
                 start = timeStamp;
             }
@@ -68,6 +87,11 @@ public class PeriodSummary {
         return sb.toString();
     }
 
+    /**
+     * Merge the data from another period object into this one. Start and end date will be adjusted if needed.
+     *
+     * @param other the period to merge
+     */
     public void merge(PeriodSummary other) {
         if (other.getStart().before(start)) {
             start = other.getStart();
@@ -79,6 +103,7 @@ public class PeriodSummary {
 
         for (Map.Entry<String, Long> entry : other.countMap.entrySet()) {
             for (int i = 0; i < entry.getValue(); i++) {
+                // the date stamp used here is irrelevant as long as it's between start and end
                 add(start, entry.getKey());
             }
         }
